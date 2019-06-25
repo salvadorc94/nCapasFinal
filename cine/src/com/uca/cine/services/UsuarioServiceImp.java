@@ -39,4 +39,11 @@ public class UsuarioServiceImp implements UsuarioService {
 		return usuariorepo.findById(id).get();
 	}
 
+	@Override
+	public Usuario findByNombreusuarioAndContraseniausuario(String user, String pass) {
+	List<Usuario> usuarios = usuariorepo.findByNombreusuarioAndContraseniausuario(user, pass);
+	Usuario usuario = usuarios.get(0);
+		return usuario;
+	}
+
 }

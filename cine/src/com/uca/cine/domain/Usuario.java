@@ -27,7 +27,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(generator="usuario_pkidusuario_seq", strategy = GenerationType.AUTO)
 	@SequenceGenerator(name = "usuario_pkidusuario_seq", sequenceName = "public.usuario_pkidusuario_seq", allocationSize = 1)
-	@Column(name = "pk_idusuario")
+	@Column(name = "pkidusuario")
 	private int pkidusuario;
 	
 	@NotEmpty(message="Ingrese un nombre")
@@ -40,7 +40,6 @@ public class Usuario {
 	@Column(name = "apellido")
 	private String apellido;
 	
-	@NotEmpty(message="Ingrese una fecha")
 	@NotNull
 	@Column(name = "fecha")
 	private Date fecha;
@@ -70,22 +69,22 @@ public class Usuario {
 
 	//FK_PAIS
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_pais")
+	@JoinColumn(name = "fkidpais")
 	private Pais pais;
 
 	//FK_MUNICIPIO
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_municipio")
+	@JoinColumn(name = "fkidmunicipio")
 	private Municipio municipio;
 	
 	//FK_DEPARTAMENTO
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_departamento")
+	@JoinColumn(name = "fkiddepartamento")
 	private Departamento departamento;
 	
 	//FK_TIPO
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_tipo")
+	@JoinColumn(name = "fkidtipo")
 	private Tipo tipo;
 	
 	
@@ -101,8 +100,8 @@ public class Usuario {
 	public int getPkidusuario() {
 		return pkidusuario;
 	}
-	public void setPkidusuario(int pk_idusuario) {
-		this.pkidusuario = pk_idusuario;
+	public void setPkidusuario(int pkidusuario) {
+		this.pkidusuario = pkidusuario;
 	}
 	public String getNombre() {
 		return nombre;

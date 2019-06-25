@@ -36,7 +36,7 @@
 <div class="center">
 <h1>Ingresa tus credenciales</h1>
 
-<form:form  action="${pageContext.request.contextPath}/login" method="POST" modelAttribute="user">
+<form:form  action="${pageContext.request.contextPath}/login" method="POST" modelAttribute="usuario">
 		<label>Ingresa tu usuario: </label>
 		<form:input type="text" path="nombreusuario"/><br>
 		<form:errors path="nombreusuario" cssStyle="color: #ff0000;"/><br>
@@ -45,7 +45,8 @@
 		<form:input type="password" path="contraseniausuario"/><br>
 		<form:errors path="contraseniausuario" cssStyle="color: #ff0000;"/><br>
 		
-		<input type="submit" value="Sign In"><br>
+		<input type="submit" value="Entrar">
+		<input type="button" value="Crear Usuario" onclick="location.href='${pageContext.request.contextPath}/edit'"><br>
 		<label><p>${mal}</p></label> 
 	</form:form>
 </div>

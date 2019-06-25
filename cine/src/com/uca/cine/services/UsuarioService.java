@@ -11,5 +11,8 @@ public interface UsuarioService {
 	public void insertarActualizarUsuario(Usuario u);
 	
 	public Usuario obtenerUsuario(int id);
+	
+	public Usuario findByNombreusuarioAndContraseniausuario (String user, String pass);
+
 
 }
