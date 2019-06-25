@@ -16,19 +16,44 @@ import javax.persistence.Table;
 public class HorarioxFuncion {
 
 	@Id
-	@GeneratedValue(generator="horarioxfuncion_pk_idhorarioxfuncion_seq", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "horarioxfuncion_pk_idhorarioxfuncion_seq", sequenceName = "public.horarioxfuncion_pk_idhorarioxfuncion_seq", allocationSize = 1)
-	@Column(name = "pk_idhorarioxfuncion")
-	private int pk_idhorarioxfuncion;
+	@GeneratedValue(generator="horarioxfuncion_pkidhorarioxfuncion_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "horarioxfuncion_pkidhorarioxfuncion_seq", sequenceName = "public.horarioxfuncion_pkidhorarioxfuncion_seq", allocationSize = 1)
+	@Column(name = "pkidhorarioxfuncion")
+	private int pkidhorarioxfuncion;
 	
 	//FK_HORARIO
 			@ManyToOne(fetch = FetchType.LAZY)
-			@JoinColumn(name = "fk_idhorariof")
+			@JoinColumn(name = "fkidhorariof")
 			private Horariof horariof;
 	
 	//FK_FUNCION
 			@ManyToOne(fetch = FetchType.LAZY)
-			@JoinColumn(name = "fk_idfuncion")
+			@JoinColumn(name = "fkidfuncion")
 			private Funcion funcion;
 
+			public int getPkidhorarioxfuncion() {
+				return pkidhorarioxfuncion;
+			}
+
+			public void setPkidhorarioxfuncion(int pkidhorarioxfuncion) {
+				this.pkidhorarioxfuncion = pkidhorarioxfuncion;
+			}
+
+			public Horariof getHorariof() {
+				return horariof;
+			}
+
+			public void setHorariof(Horariof horariof) {
+				this.horariof = horariof;
+			}
+
+			public Funcion getFuncion() {
+				return funcion;
+			}
+
+			public void setFuncion(Funcion funcion) {
+				this.funcion = funcion;
+			}
+
+			
 }

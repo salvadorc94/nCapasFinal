@@ -20,10 +20,10 @@ import com.sun.istack.NotNull;
 public class Municipio {
 	
 	@Id
-	@GeneratedValue(generator="municipio_pk_idmunicipio_seq", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "municipio_pk_idmunicipio_seq", sequenceName = "public.municipio_pk_idmunicipio_seq", allocationSize = 1)
-	@Column(name = "pk_idmunicipio")
-	private int pk_idmunicipio;
+	@GeneratedValue(generator="municipio_pkidmunicipio_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "municipio_pkidmunicipio_seq", sequenceName = "public.municipio_pkidmunicipio_seq", allocationSize = 1)
+	@Column(name = "pkidmunicipio")
+	private int pkidmunicipio;
 	
 	@NotNull
 	@Column(name = "municipio")
@@ -32,12 +32,12 @@ public class Municipio {
 	@OneToMany(mappedBy = "municipio", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Usuario> usuarios;
 
-	public int getPk_idmunicipio() {
-		return pk_idmunicipio;
+	public int getPkidmunicipio() {
+		return pkidmunicipio;
 	}
 
-	public void setPk_idmunicipio(int pk_idmunicipio) {
-		this.pk_idmunicipio = pk_idmunicipio;
+	public void setPkidmunicipio(int pkidmunicipio) {
+		this.pkidmunicipio = pkidmunicipio;
 	}
 
 	public String getMunicipio() {
@@ -55,7 +55,5 @@ public class Municipio {
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
-	
-	
 
 }

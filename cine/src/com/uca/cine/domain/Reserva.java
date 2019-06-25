@@ -22,66 +22,66 @@ import com.sun.istack.NotNull;
 public class Reserva {
 	
 	@Id
-	@GeneratedValue(generator="reserva_pk_idreserva_seq", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "reserva_pk_idreserva_seq", sequenceName = "public.reserva_pk_idreserva_seq", allocationSize = 1)
-	@Column(name = "pk_idreserva")
-	private int pk_idreserva;
+	@GeneratedValue(generator="reserva_pkidreserva_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "reserva_pkidreserva_seq", sequenceName = "public.reserva_pkidreserva_seq", allocationSize = 1)
+	@Column(name = "pkidreserva")
+	private int pkidreserva;
 	
 	@NotNull
 	@Min(1)
-	@Column(name = "n_asientos_reserva")
-	private int n_asientos_reserva;
+	@Column(name = "nasientosreserva")
+	private int nasientosreserva;
 	
 	@NotNull
-	@Column(name = "saldo_utilizar")
-	private float saldo_utilizar;
+	@Column(name = "saldoutilizar")
+	private float saldoutilizar;
 	
 	@NotNull
-	@Column(name = "saldo_restante")
-	private float saldo_restante;
+	@Column(name = "saldorestante")
+	private float saldorestante;
 	
 	@NotEmpty(message="Ingrese una fecha")
 	@NotNull
-	@Column(name = "fecha_reserva")
-	private Date fecha_reserva;
+	@Column(name = "fechareserva")
+	private Date fechareserva;
 	
 	//FK ID USUARIO
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_idusuario")
+	@JoinColumn(name = "fkidusuario")
 	private Usuario usuario;
 	//FK ID FUNCION
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_idfuncion")
+	@JoinColumn(name = "fkidfuncion")
 	private Funcion funcion;
-	public int getPk_idreserva() {
-		return pk_idreserva;
+	public int getPkidreserva() {
+		return pkidreserva;
 	}
-	public void setPk_idreserva(int pk_idreserva) {
-		this.pk_idreserva = pk_idreserva;
+	public void setPkidreserva(int pkidreserva) {
+		this.pkidreserva = pkidreserva;
 	}
-	public int getN_asientos_reserva() {
-		return n_asientos_reserva;
+	public int getNasientosreserva() {
+		return nasientosreserva;
 	}
-	public void setN_asientos_reserva(int n_asientos_reserva) {
-		this.n_asientos_reserva = n_asientos_reserva;
+	public void setNasientosreserva(int nasientosreserva) {
+		this.nasientosreserva = nasientosreserva;
 	}
-	public float getSaldo_utilizar() {
-		return saldo_utilizar;
+	public float getSaldoutilizar() {
+		return saldoutilizar;
 	}
-	public void setSaldo_utilizar(float saldo_utilizar) {
-		this.saldo_utilizar = saldo_utilizar;
+	public void setSaldoutilizar(float saldoutilizar) {
+		this.saldoutilizar = saldoutilizar;
 	}
-	public float getSaldo_restante() {
-		return saldo_restante;
+	public float getSaldorestante() {
+		return saldorestante;
 	}
-	public void setSaldo_restante(float saldo_restante) {
-		this.saldo_restante = saldo_restante;
+	public void setSaldorestante(float saldorestante) {
+		this.saldorestante = saldorestante;
 	}
-	public Date getFecha_reserva() {
-		return fecha_reserva;
+	public Date getFechareserva() {
+		return fechareserva;
 	}
-	public void setFecha_reserva(Date fecha_reserva) {
-		this.fecha_reserva = fecha_reserva;
+	public void setFechareserva(Date fechareserva) {
+		this.fechareserva = fechareserva;
 	}
 	public Usuario getUsuario() {
 		return usuario;
@@ -96,6 +96,6 @@ public class Reserva {
 		this.funcion = funcion;
 	}
 	
-	
+		
 	
 }

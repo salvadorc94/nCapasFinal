@@ -13,13 +13,13 @@ import com.uca.cine.repositories.UsuarioRepository;
 public class UsuarioServiceImp implements UsuarioService {
 
 	@Autowired
-	private UsuarioRepository usuariorepo;
+	public UsuarioRepository usuariorepo;
 	
 	@Override
 	public boolean validarUsuario(String username, String password) {
-		List<Usuario> usuarios = usuariorepo.findByUsuarioAndClave(username, password);
+		List<Usuario> usuarios = usuariorepo.findNombreUsuario(username, password);
 		if(usuarios != null) {
-			if(usuarios.size()==1 && usuarios.get(0).getEstado() == true) {
+			if(usuarios.size()==1 && usuarios.get(0).getEstadoDelegate().equals("Activo")) {
 				return true;
 			}else {
 				return false;
@@ -36,7 +36,7 @@ public class UsuarioServiceImp implements UsuarioService {
 
 	@Override
 	public Usuario obtenerUsuario(int id) {
-		return usuariorepo.getOne(id);
+		return usuariorepo.findById(id).get();
 	}
 
 }

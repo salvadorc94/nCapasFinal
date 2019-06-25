@@ -16,21 +16,46 @@ import javax.persistence.Table;
 public class TipoxFuncion {
 
 	@Id
-	@GeneratedValue(generator="tipoxfuncion_pk_pk_idtipoxfuncion_seq", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "tipoxfuncion_pk_idtipoxfuncion_seq", sequenceName = "public.tipoxfuncion_pk_idtipoxfuncion_seq", allocationSize = 1)
-	@Column(name = "pk_idtipoxfuncion")
-	private int pk_idtipoxfuncion;
+	@GeneratedValue(generator="tipoxfuncion_pkidtipoxfuncion_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "tipoxfuncion_pkidtipoxfuncion_seq", sequenceName = "public.tipoxfuncion_pkidtipoxfuncion_seq", allocationSize = 1)
+	@Column(name = "pkidtipoxfuncion")
+	private int pkidtipoxfuncion;
 	
 	//FK_TIPO
 		@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "fk_idtipof")
+		@JoinColumn(name = "fkidtipof")
 		private Tipof tipof;
 		
 	//FK_FUNCION
 		@ManyToOne(fetch = FetchType.LAZY)
-		@JoinColumn(name = "fk_idfuncion")
+		@JoinColumn(name = "fkidfuncion")
 		private Funcion funcion;
 
+		public int getPkidtipoxfuncion() {
+			return pkidtipoxfuncion;
+		}
+
+		public void setPkidtipoxfuncion(int pkidtipoxfuncion) {
+			this.pkidtipoxfuncion = pkidtipoxfuncion;
+		}
+
+		public Tipof getTipof() {
+			return tipof;
+		}
+
+		public void setTipof(Tipof tipof) {
+			this.tipof = tipof;
+		}
+
+		public Funcion getFuncion() {
+			return funcion;
+		}
+
+		public void setFuncion(Funcion funcion) {
+			this.funcion = funcion;
+		}
+
+		
 		
 	
 	

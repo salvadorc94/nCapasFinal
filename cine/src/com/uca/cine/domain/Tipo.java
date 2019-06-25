@@ -20,10 +20,10 @@ import com.sun.istack.NotNull;
 public class Tipo {
 	
 	@Id
-	@GeneratedValue(generator="tipo_pk_idtipo_seq", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "tipo_pk_idtipo_seq", sequenceName = "public.tipo_pk_idtipo_seq", allocationSize = 1)
-	@Column(name = "pk_idtipo")
-	private int pk_idtipo;
+	@GeneratedValue(generator="tipo_pkidtipo_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "tipo_pkidtipo_seq", sequenceName = "public.tipo_pkidtipo_seq", allocationSize = 1)
+	@Column(name = "pkidtipo")
+	private int pkidtipo;
 	
 	@NotNull
 	@Column(name = "tipo")
@@ -36,12 +36,12 @@ public class Tipo {
 	@OneToMany(mappedBy = "tipo", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Usuario> usuarios;
 
-	public int getPk_idtipo() {
-		return pk_idtipo;
+	public int getPkidtipo() {
+		return pkidtipo;
 	}
 
-	public void setPk_idtipo(int pk_idtipo) {
-		this.pk_idtipo = pk_idtipo;
+	public void setPkidtipo(int pkidtipo) {
+		this.pkidtipo = pkidtipo;
 	}
 
 	public String getTipo() {
@@ -67,6 +67,7 @@ public class Tipo {
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
+
 	
 	
 

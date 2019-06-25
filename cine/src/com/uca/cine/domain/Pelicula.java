@@ -22,10 +22,10 @@ import com.sun.istack.NotNull;
 public class Pelicula {
 	
 	@Id
-	@GeneratedValue(generator="pelicula_pk_idpelicula_seq", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "pelicula_pk_idpelicula_seq", sequenceName = "public.pelicula_pk_idpelicula_seq", allocationSize = 1)
-	@Column(name = "pk_idpelicula")
-	private int pk_idpelicula;
+	@GeneratedValue(generator="pelicula_pkidpelicula_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "pelicula_pkidpelicula_seq", sequenceName = "public.pelicula_pkidpelicula_seq", allocationSize = 1)
+	@Column(name = "pkidpelicula")
+	private int pkidpelicula;
 	
 	@NotEmpty(message="Ingrese un nombre")
 	@NotNull
@@ -38,22 +38,21 @@ public class Pelicula {
 	@NotNull
 	@Column(name = "imagen")
 	private String imagen;
+	@NotNull
+	@Column(name = "fechacreacion")
+	private Date fechacreacion;
 	
 	@NotNull
-	@Column(name = "fecha_creacion")
-	private Date fecha_creacion;
+	@Column(name = "usuariocreacion")
+	private String usuariocreacion;
 	
 	@NotNull
-	@Column(name = "usuario_creacion")
-	private String usuario_creacion;
+	@Column(name = "fechamodificacion")
+	private Date fechamodificacion;
 	
 	@NotNull
-	@Column(name = "fecha_modificacion")
-	private Date fecha_modificacion;
-	
-	@NotNull
-	@Column(name = "usuario_modificacion")
-	private String usuario_modificacion;
+	@Column(name = "usuariomodificacion")
+	private String usuariomodificacion;
 	
 	@OneToMany(mappedBy = "pelicula", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Funcion> funciones;
@@ -62,12 +61,12 @@ public class Pelicula {
 		return estado == true ? "Activo":"Inactivo";
 	}
 
-	public int getPk_idpelicula() {
-		return pk_idpelicula;
+	public int getPkidpelicula() {
+		return pkidpelicula;
 	}
 
-	public void setPk_idpelicula(int pk_idpelicula) {
-		this.pk_idpelicula = pk_idpelicula;
+	public void setPkidpelicula(int pkidpelicula) {
+		this.pkidpelicula = pkidpelicula;
 	}
 
 	public String getNombre() {
@@ -94,36 +93,36 @@ public class Pelicula {
 		this.imagen = imagen;
 	}
 
-	public Date getFecha_creacion() {
-		return fecha_creacion;
+	public Date getFechacreacion() {
+		return fechacreacion;
 	}
 
-	public void setFecha_creacion(Date fecha_creacion) {
-		this.fecha_creacion = fecha_creacion;
+	public void setFechacreacion(Date fechacreacion) {
+		this.fechacreacion = fechacreacion;
 	}
 
-	public String getUsuario_creacion() {
-		return usuario_creacion;
+	public String getUsuariocreacion() {
+		return usuariocreacion;
 	}
 
-	public void setUsuario_creacion(String usuario_creacion) {
-		this.usuario_creacion = usuario_creacion;
+	public void setUsuariocreacion(String usuariocreacion) {
+		this.usuariocreacion = usuariocreacion;
 	}
 
-	public Date getFecha_modificacion() {
-		return fecha_modificacion;
+	public Date getFechamodificacion() {
+		return fechamodificacion;
 	}
 
-	public void setFecha_modificacion(Date fecha_modificacion) {
-		this.fecha_modificacion = fecha_modificacion;
+	public void setFechamodificacion(Date fechamodificacion) {
+		this.fechamodificacion = fechamodificacion;
 	}
 
-	public String getUsuario_modificacion() {
-		return usuario_modificacion;
+	public String getUsuariomodificacion() {
+		return usuariomodificacion;
 	}
 
-	public void setUsuario_modificacion(String usuario_modificacion) {
-		this.usuario_modificacion = usuario_modificacion;
+	public void setUsuariomodificacion(String usuariomodificacion) {
+		this.usuariomodificacion = usuariomodificacion;
 	}
 
 	public List<Funcion> getFunciones() {
@@ -133,7 +132,7 @@ public class Pelicula {
 	public void setFunciones(List<Funcion> funciones) {
 		this.funciones = funciones;
 	}
-	
-	
+
+		
 
 }

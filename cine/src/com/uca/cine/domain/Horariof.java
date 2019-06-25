@@ -22,10 +22,10 @@ import com.sun.istack.NotNull;
 public class Horariof {
 	
 	@Id
-	@GeneratedValue(generator="horariof_pk_idhorariof_seq", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "horariof_pk_idhorariof_seq", sequenceName = "public.horariof_pk_idhorariof_seq", allocationSize = 1)
-	@Column(name = "pk_idhorariof")
-	private int pk_idhorariof;
+	@GeneratedValue(generator="horariof_pkidhorariof_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "horariof_pkidhorariof_seq", sequenceName = "public.horariof_pkidhorariof_seq", allocationSize = 1)
+	@Column(name = "pkidhorariof")
+	private int pkidhorariof;
 	
 	@NotEmpty(message="Ingrese el tipo")
 	@NotNull
@@ -36,20 +36,20 @@ public class Horariof {
 	private boolean estado;
 	
 	@NotNull
-	@Column(name = "fecha_creacion")
-	private Date fecha_creacion;
+	@Column(name = "fechacreacion")
+	private Date fechacreacion;
 	
 	@NotNull
-	@Column(name = "usuario_creacion")
-	private String usuario_creacion;
+	@Column(name = "usuariocreacion")
+	private String usuariocreacion;
 	
 	@NotNull
-	@Column(name = "fecha_modificacion")
-	private Date fecha_modificacion;
+	@Column(name = "fechamodificacion")
+	private Date fechamodificacion;
 	
 	@NotNull
-	@Column(name = "usuario_modificacion")
-	private String usuario_modificacion;
+	@Column(name = "usuariomodificacion")
+	private String usuariomodificacion;
 	
 	@OneToMany(mappedBy = "horariof", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<HorarioxFuncion> horarioxfuncion;
@@ -58,12 +58,12 @@ public class Horariof {
 		return estado == true ? "Activo":"Inactivo";
 	}
 
-	public int getPk_idhorariof() {
-		return pk_idhorariof;
+	public int getPkidhorariof() {
+		return pkidhorariof;
 	}
 
-	public void setPk_idhorariof(int pk_idhorariof) {
-		this.pk_idhorariof = pk_idhorariof;
+	public void setPkidhorariof(int pkidhorariof) {
+		this.pkidhorariof = pkidhorariof;
 	}
 
 	public String getTipo() {
@@ -82,36 +82,36 @@ public class Horariof {
 		this.estado = estado;
 	}
 
-	public Date getFecha_creacion() {
-		return fecha_creacion;
+	public Date getFechacreacion() {
+		return fechacreacion;
 	}
 
-	public void setFecha_creacion(Date fecha_creacion) {
-		this.fecha_creacion = fecha_creacion;
+	public void setFechacreacion(Date fechacreacion) {
+		this.fechacreacion = fechacreacion;
 	}
 
-	public String getUsuario_creacion() {
-		return usuario_creacion;
+	public String getUsuariocreacion() {
+		return usuariocreacion;
 	}
 
-	public void setUsuario_creacion(String usuario_creacion) {
-		this.usuario_creacion = usuario_creacion;
+	public void setUsuariocreacion(String usuariocreacion) {
+		this.usuariocreacion = usuariocreacion;
 	}
 
-	public Date getFecha_modificacion() {
-		return fecha_modificacion;
+	public Date getFechamodificacion() {
+		return fechamodificacion;
 	}
 
-	public void setFecha_modificacion(Date fecha_modificacion) {
-		this.fecha_modificacion = fecha_modificacion;
+	public void setFechamodificacion(Date fechamodificacion) {
+		this.fechamodificacion = fechamodificacion;
 	}
 
-	public String getUsuario_modificacion() {
-		return usuario_modificacion;
+	public String getUsuariomodificacion() {
+		return usuariomodificacion;
 	}
 
-	public void setUsuario_modificacion(String usuario_modificacion) {
-		this.usuario_modificacion = usuario_modificacion;
+	public void setUsuariomodificacion(String usuariomodificacion) {
+		this.usuariomodificacion = usuariomodificacion;
 	}
 
 	public List<HorarioxFuncion> getHorarioxfuncion() {
@@ -121,7 +121,6 @@ public class Horariof {
 	public void setHorarioxfuncion(List<HorarioxFuncion> horarioxfuncion) {
 		this.horarioxfuncion = horarioxfuncion;
 	}
-	
 	
 
 }

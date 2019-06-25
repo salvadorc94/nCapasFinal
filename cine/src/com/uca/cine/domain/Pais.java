@@ -20,10 +20,10 @@ import com.sun.istack.NotNull;
 public class Pais {
 	
 	@Id
-	@GeneratedValue(generator="pais_pk_idpais_seq", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "pais_pk_idpais_seq", sequenceName = "public.pais_pk_idpais_seq", allocationSize = 1)
-	@Column(name = "pk_idpais")
-	private int pk_idpais;
+	@GeneratedValue(generator="pais_pkidpais_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "pais_pkidpais_seq", sequenceName = "public.pais_pkidpais_seq", allocationSize = 1)
+	@Column(name = "pkidpais")
+	private int pkidpais;
 	
 	@NotNull
 	@Column(name = "pais")
@@ -32,12 +32,12 @@ public class Pais {
 	@OneToMany(mappedBy = "pais", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Usuario> usuarios;
 
-	public int getPk_idpais() {
-		return pk_idpais;
+	public int getPkidpais() {
+		return pkidpais;
 	}
 
-	public void setPk_idpais(int pk_idpais) {
-		this.pk_idpais = pk_idpais;
+	public void setPkidpais(int pkidpais) {
+		this.pkidpais = pkidpais;
 	}
 
 	public String getPais() {
@@ -55,7 +55,5 @@ public class Pais {
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
-	
-	
 	
 }

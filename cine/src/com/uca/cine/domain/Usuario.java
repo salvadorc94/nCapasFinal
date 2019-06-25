@@ -17,18 +17,18 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(schema="public",name="usuario")
 public class Usuario {
 	
+
 	@Id
-	@GeneratedValue(generator="usuario_pk_idusuario_seq", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "usuario_pk_idusuario_seq", sequenceName = "public.usuario_pk_idusuario_seq", allocationSize = 1)
+	@GeneratedValue(generator="usuario_pkidusuario_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "usuario_pkidusuario_seq", sequenceName = "public.usuario_pkidusuario_seq", allocationSize = 1)
 	@Column(name = "pk_idusuario")
-	private int pk_idusuario;
+	private int pkidusuario;
 	
 	@NotEmpty(message="Ingrese un nombre")
 	@NotNull
@@ -55,13 +55,13 @@ public class Usuario {
 	
 	@NotEmpty(message="Ingrese un nombre de usuario")
 	@NotNull
-	@Column(name = "nombre_usuario")
-	private String nombre_usuario;
+	@Column(name = "nombreusuario")
+	private String nombreusuario;
 	
 	@NotEmpty(message="Ingrese una contrasenia")
 	@NotNull
-	@Column(name = "contrasenia_usuario")
-	private String contrasenia_usuario;
+	@Column(name = "contraseniausuario")
+	private String contraseniausuario;
 	
 	@Min(0)
 	@NotNull
@@ -89,130 +89,104 @@ public class Usuario {
 	private Tipo tipo;
 	
 	
-
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Reserva> reservas;
 	
+	public Usuario() {
+		super();
+	}
 	public String getEstadoDelegate() {
 		return estado == true ? "Activo":"Inactivo";
 	}
-	
-	public boolean getEstado() {
-		return estado;
+	public int getPkidusuario() {
+		return pkidusuario;
 	}
-
-	public int getPk_idusuario() {
-		return pk_idusuario;
+	public void setPkidusuario(int pk_idusuario) {
+		this.pkidusuario = pk_idusuario;
 	}
-
-	public void setPk_idusuario(int pk_idusuario) {
-		this.pk_idusuario = pk_idusuario;
-	}
-
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public String getApellido() {
 		return apellido;
 	}
-
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-
 	public Date getFecha() {
 		return fecha;
 	}
-
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-
 	public String getDireccion() {
 		return direccion;
 	}
-
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-
 	public boolean isEstado() {
 		return estado;
 	}
-
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
-
-	public String getNombre_usuario() {
-		return nombre_usuario;
+	
+	
+	public String getNombreusuario() {
+		return nombreusuario;
 	}
-
-	public void setNombre_usuario(String nombre_usuario) {
-		this.nombre_usuario = nombre_usuario;
+	public void setNombreusuario(String nombreusuario) {
+		this.nombreusuario = nombreusuario;
 	}
-
-	public String getContrasenia_usuario() {
-		return contrasenia_usuario;
+	
+	public String getContraseniausuario() {
+		return contraseniausuario;
 	}
-
-	public void setContrasenia_usuario(String contrasenia_usuario) {
-		this.contrasenia_usuario = contrasenia_usuario;
+	public void setContraseniausuario(String contraseniausuario) {
+		this.contraseniausuario = contraseniausuario;
 	}
-
 	public float getSaldo() {
 		return saldo;
 	}
-
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}
-
 	public Pais getPais() {
 		return pais;
 	}
-
 	public void setPais(Pais pais) {
 		this.pais = pais;
 	}
-
 	public Municipio getMunicipio() {
 		return municipio;
 	}
-
 	public void setMunicipio(Municipio municipio) {
 		this.municipio = municipio;
 	}
-
 	public Departamento getDepartamento() {
 		return departamento;
 	}
-
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
 	}
-
 	public Tipo getTipo() {
 		return tipo;
 	}
-
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
-	
 	public List<Reserva> getReservas() {
 		return reservas;
 	}
-
 	public void setReservas(List<Reserva> reservas) {
 		this.reservas = reservas;
 	}
 	
+		
 	
 	
 }

@@ -20,10 +20,10 @@ import com.sun.istack.NotNull;
 public class Departamento {
 
 	@Id
-	@GeneratedValue(generator="departamento_pk_iddepartamento_seq", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "departamento_pk_iddepartamento_seq", sequenceName = "public.departamento_pk_iddepartamento_seq", allocationSize = 1)
-	@Column(name = "pk_iddepartamento")
-	private int pk_iddepartamento;
+	@GeneratedValue(generator="departamento_pkiddepartamento_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "departamento_pkiddepartamento_seq", sequenceName = "public.departamento_pkiddepartamento_seq", allocationSize = 1)
+	@Column(name = "pkiddepartamento")
+	private int pkiddepartamento;
 	
 	@NotNull
 	@Column(name = "departamento")
@@ -32,12 +32,14 @@ public class Departamento {
 	@OneToMany(mappedBy = "departamento", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Usuario> usuarios;
 
-	public int getPk_iddepartamento() {
-		return pk_iddepartamento;
+	
+
+	public int getPkiddepartamento() {
+		return pkiddepartamento;
 	}
 
-	public void setPk_iddepartamento(int pk_iddepartamento) {
-		this.pk_iddepartamento = pk_iddepartamento;
+	public void setPkiddepartamento(int pkiddepartamento) {
+		this.pkiddepartamento = pkiddepartamento;
 	}
 
 	public String getDepartamento() {

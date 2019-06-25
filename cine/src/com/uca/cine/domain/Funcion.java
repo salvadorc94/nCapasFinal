@@ -24,10 +24,10 @@ import com.sun.istack.NotNull;
 public class Funcion {
 	
 	@Id
-	@GeneratedValue(generator="funcion_pk_idfuncion_seq", strategy = GenerationType.AUTO)
-	@SequenceGenerator(name = "funcion_pk_idfuncion_seq", sequenceName = "public.funcion_pk_idfuncion_seq", allocationSize = 1)
-	@Column(name = "pk_idfuncion")
-	private int pk_idfuncion;
+	@GeneratedValue(generator="funcion_pkidfuncion_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "funcion_pkidfuncion_seq", sequenceName = "public.funcion_pkidfuncion_seq", allocationSize = 1)
+	@Column(name = "pkidfuncion")
+	private int pkidfuncion;
 	
 	@Min(1)
 	@Column(name = "asientos")
@@ -37,23 +37,23 @@ public class Funcion {
 	private boolean estado;
 	
 	@NotNull
-	@Column(name = "fecha_creacion")
-	private Date fecha_creacion;
+	@Column(name = "fechacreacion")
+	private Date fechacreacion;
 	
 	@NotNull
-	@Column(name = "usuario_creacion")
-	private String usuario_creacion;
+	@Column(name = "usuariocreacion")
+	private String usuariocreacion;
 	
 	@NotNull
-	@Column(name = "fecha_modificacion")
-	private Date fecha_modificacion;
+	@Column(name = "fechamodificacion")
+	private Date fechamodificacion;
 	
 	@NotNull
-	@Column(name = "usuario_modificacion")
-	private String usuario_modificacion;
+	@Column(name = "usuariomodificacion")
+	private String usuariomodificacion;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_idpelicula")
+	@JoinColumn(name = "fkidpelicula")
 	private Pelicula pelicula;
 	
 	@OneToMany(mappedBy = "funcion", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
@@ -69,12 +69,12 @@ public class Funcion {
 		return estado == true ? "Activo":"Inactivo";
 	}
 
-	public int getPk_idfuncion() {
-		return pk_idfuncion;
+	public int getPkidfuncion() {
+		return pkidfuncion;
 	}
 
-	public void setPk_idfuncion(int pk_idfuncion) {
-		this.pk_idfuncion = pk_idfuncion;
+	public void setPkidfuncion(int pkidfuncion) {
+		this.pkidfuncion = pkidfuncion;
 	}
 
 	public int getAsientos() {
@@ -93,36 +93,36 @@ public class Funcion {
 		this.estado = estado;
 	}
 
-	public Date getFecha_creacion() {
-		return fecha_creacion;
+	public Date getFechacreacion() {
+		return fechacreacion;
 	}
 
-	public void setFecha_creacion(Date fecha_creacion) {
-		this.fecha_creacion = fecha_creacion;
+	public void setFechacreacion(Date fechacreacion) {
+		this.fechacreacion = fechacreacion;
 	}
 
-	public String getUsuario_creacion() {
-		return usuario_creacion;
+	public String getUsuariocreacion() {
+		return usuariocreacion;
 	}
 
-	public void setUsuario_creacion(String usuario_creacion) {
-		this.usuario_creacion = usuario_creacion;
+	public void setUsuariocreacion(String usuariocreacion) {
+		this.usuariocreacion = usuariocreacion;
 	}
 
-	public Date getFecha_modificacion() {
-		return fecha_modificacion;
+	public Date getFechamodificacion() {
+		return fechamodificacion;
 	}
 
-	public void setFecha_modificacion(Date fecha_modificacion) {
-		this.fecha_modificacion = fecha_modificacion;
+	public void setFechamodificacion(Date fechamodificacion) {
+		this.fechamodificacion = fechamodificacion;
 	}
 
-	public String getUsuario_modificacion() {
-		return usuario_modificacion;
+	public String getUsuariomodificacion() {
+		return usuariomodificacion;
 	}
 
-	public void setUsuario_modificacion(String usuario_modificacion) {
-		this.usuario_modificacion = usuario_modificacion;
+	public void setUsuariomodificacion(String usuariomodificacion) {
+		this.usuariomodificacion = usuariomodificacion;
 	}
 
 	public Pelicula getPelicula() {
@@ -156,9 +156,6 @@ public class Funcion {
 	public void setTipoxfuncion(List<TipoxFuncion> tipoxfuncion) {
 		this.tipoxfuncion = tipoxfuncion;
 	}
-	
-	
-	
 	
 	
 
