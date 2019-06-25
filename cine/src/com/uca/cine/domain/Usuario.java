@@ -96,6 +96,10 @@ public class Usuario {
 	public String getEstadoDelegate() {
 		return estado == true ? "Activo":"Inactivo";
 	}
+	
+	public boolean getEstado() {
+		return estado;
+	}
 
 	public int getPk_idusuario() {
 		return pk_idusuario;
