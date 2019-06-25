@@ -2,6 +2,8 @@ package com.uca.cine.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.uca.cine.domain.Usuario;
@@ -24,6 +26,17 @@ public class UsuarioServiceImp implements UsuarioService {
 			}
 		}
 		return false;
+	}
+
+	@Transactional
+	@Override
+	public void insertarActualizarUsuario(Usuario u) {
+		usuariorepo.save(u);
+	}
+
+	@Override
+	public Usuario obtenerUsuario(int id) {
+		return usuariorepo.getOne(id);
 	}
 
 }
