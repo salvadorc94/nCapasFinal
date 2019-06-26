@@ -19,4 +19,9 @@ public class MunicipioServiceImp implements MunicipioService {
 		return munirepo.findAll();
 	}
 
+	@Override
+	public Municipio getOne(int id) {
+		return munirepo.getOne(id);
+	}
+
 }

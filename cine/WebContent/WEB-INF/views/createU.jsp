@@ -29,13 +29,13 @@
 }
 </style>
 
-<title>Edit Employee</title>
+<title>Create Employee</title>
 </head>
 <body>
 
 <div class="card">
 <div class="center">
-<h1>Edit Employee</h1>
+<h1>Create Employee</h1>
 
 <form:form  action="${pageContext.request.contextPath}/save" method="POST" modelAttribute="usuario">
 		
@@ -65,18 +65,17 @@
 		<form:errors path="contraseniausuario" cssStyle="color: #ff0000;"/><br>
 		
 		<label>Pais: </label>
-		<select id="Selector" name="pais" onchange="myFunction();">
+		<select id="pais" name="pais" onchange="myFunction();">
+			<option value="#">Seleccionar Pais</option>
 			<c:forEach items="${listaPais}" var="paises">
 				<option value="${paises.pkidpais}">${paises.pais}</option>
 			</c:forEach>
 		</select><br>
-		<label>Departamento: </label>
 		<select id="depa" name="depa">
 			<c:forEach items="${listaDepa}" var="depas">
 				<option value="${depas.pkiddepartamento}">${depas.departamento}</option>
 			</c:forEach>
 		</select><br>
-		<label id="asd">Municipio: </label>
 		<select id="muni" name="muni">
 			<c:forEach items="${listaMuni}" var="munis">
 				<option value="${munis.pkidmunicipio}">${munis.municipio}</option>
@@ -90,8 +89,8 @@
 
 <script>
 function myFunction() {
-  var x = document.getElementById("Selector").value;
-  if(x == 1){
+  var x = document.getElementById("pais").value;
+  if(x != 53){
 	  document.getElementById("depa").style.display = 'none';
 	  document.getElementById("muni").style.display = 'none';
   }else{

@@ -7,4 +7,6 @@ import com.uca.cine.domain.Municipio;
 public interface MunicipioService {
 
 	public List<Municipio> listar();
+	
+	public Municipio getOne(int id);
 }

@@ -47,7 +47,7 @@
 		
 		<input type="submit" value="Entrar">
 		<input type="button" value="Crear Usuario" onclick="location.href='${pageContext.request.contextPath}/edit'"><br>
-		<label><p>${mal}</p></label> 
+		<label><p>${mal}</p></label>
 	</form:form>
 </div>
 </div>

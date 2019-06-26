@@ -7,5 +7,7 @@ import com.uca.cine.domain.Departamento;
 public interface DepartamentoService {
 	
 	public List<Departamento> listar();
+	
+	public Departamento getOne(int id);
 
 }

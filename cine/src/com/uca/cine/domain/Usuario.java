@@ -42,7 +42,7 @@ public class Usuario {
 	
 	@NotNull
 	@Column(name = "fecha")
-	private Date fecha;
+	private String fecha;
 	
 	@NotEmpty(message="Ingrese una direccion")
 	@NotNull
@@ -62,8 +62,6 @@ public class Usuario {
 	@Column(name = "contraseniausuario")
 	private String contraseniausuario;
 	
-	@Min(0)
-	@NotNull
 	@Column(name = "saldo")
 	private float saldo;
 
@@ -115,10 +113,10 @@ public class Usuario {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 	public String getDireccion() {

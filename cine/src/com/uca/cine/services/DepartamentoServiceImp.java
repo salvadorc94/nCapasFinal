@@ -17,5 +17,10 @@ public class DepartamentoServiceImp implements DepartamentoService {
 	public List<Departamento> listar() {
 		return deparepo.findAll();
 	}
+
+	@Override
+	public Departamento getOne(int id) {
+		return deparepo.getOne(id);
+	}
 	
 }

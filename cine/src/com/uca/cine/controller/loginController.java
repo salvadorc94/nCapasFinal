@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.cine.domain.Usuario;
@@ -62,10 +63,24 @@ public class loginController {
 	}
 	
 	@RequestMapping("/save")
-	public ModelAndView guardar(@Valid @ModelAttribute Usuario user, BindingResult result) {
+	public ModelAndView guardar(@Valid @ModelAttribute Usuario user, BindingResult result,@RequestParam("pais") int pais,@RequestParam("depa") int depa,@RequestParam("muni") int muni) {
 		ModelAndView mav = new ModelAndView();
-		Usuario usuario = new Usuario();
-		mav.addObject("usuario", usuario);
+		//if(result.hasErrors()) {
+		//	mav.setViewName("createU");
+		//	return mav;
+		//}else {
+			user.setEstado(false);
+			user.setSaldo(20);
+			user.setPais(paisservice.getOne(pais));
+			user.setMunicipio(muniserv.getOne(muni));
+			user.setDepartamento(depaserv.getOne(depa));
+			user.setFecha(user.getFecha());
+			usuarioservice.insertarActualizarUsuario(user);
+		//}
+		
+		
+		//Usuario usuario = new Usuario();
+		//mav.addObject("usuario", usuario);
 		mav.setViewName("login");
 		return mav;
 	}

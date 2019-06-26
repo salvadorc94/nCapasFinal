@@ -18,6 +18,11 @@ public class PaisServiceImp implements PaisService {
 	public List<Pais> listar() {
 		return paisrepository.findAll();
 	}
+
+	@Override
+	public Pais getOne(int id) {
+		return paisrepository.getOne(id);
+	}
 	
 	
 	
