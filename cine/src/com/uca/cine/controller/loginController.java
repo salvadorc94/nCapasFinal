@@ -104,8 +104,8 @@ public class loginController {
 			}
 			
 			if(results) {
-				//mav.addObject("usuario",usuario);
-				//mav.addObject("Pelicula", peliculas);
+				mav.addObject("usuario",usuario);
+				mav.addObject("peliculas", peliculas);
 				mav.setViewName("listadoPeli");
 			}else {
 				mav.addObject("mal","Credenciales invalidas o Usuario Inactivo Contactar Admin");

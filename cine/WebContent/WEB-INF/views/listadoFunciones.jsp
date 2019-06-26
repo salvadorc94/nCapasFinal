@@ -17,30 +17,43 @@
 </style>
 
 			
-<title>Peliculas</title>
+<title>Horarios</title>
 </head>
 <body>
-	<h2 id="prueba">Listado de Peliculas.</h2>
+	<h2>Horarios para ${pelicula.nombre}</h2>
 	<br>
 	<div class="table-responsive center">          
   		<table class="table table-hover">
     		<thead>
       			<tr>
         			<th>Action</th>
-        			<th>Nombre</th>
-        			<th>Imagen</th>
+        			<th>Numero de asientos</th>
+        			<th>Tipo de asiento</th>
+        			<th>Horario</th>
       			</tr>
     		</thead>
     	<tbody>
-        		<c:forEach items="${peliculas}" var="peliculas">
-        		<c:set var ="estado" value="${peliculas.estado}"/>
+        		<c:forEach items="${funciones}" var="funciones">
+        		<c:set var ="estado" value="${funciones.estado}"/>
         		<c:if test = "${estado == true}">
         			<tr>
         			<td>
-  						<input type="button" class="btn btn-primary" value="Ver funciones" onclick="location.href='${pageContext.request.contextPath}/view?cp=${peliculas.pkidpelicula}&cu=${usuario.pkidusuario}'"/>
+  						<input type="button" class="btn btn-primary" value="Reservar" onclick="location.href='${pageContext.request.contextPath}/reservar?cp=${pelicula.pkidpelicula}&cu=${usuario.pkidusuario}&fu=${funciones.pkidfuncion}'"/>
         				</td>	
-        				<td>${peliculas.nombre}</td>
-        				<td><img height="300px" width="200px" src="data:image/jpeg;base64,${peliculas.imgDelegate}" /></td>
+        				<td>${funciones.asientos}</td>
+        				<td>
+        				<c:forEach items="${funciones.tipoxfuncion}" var="tipos">
+        						<p>${tipos.tipof.tipo}</p>
+        					</c:forEach>
+        				</td>
+        				<td>
+        					<c:forEach items="${funciones.horarioxfuncion}" var="horarios">
+        						<p>${horarios.horariof.horario}</p>
+        					</c:forEach>
+        				
+        				</td>
+        				
+        			
         			</tr>
         			</c:if>
         		</c:forEach>

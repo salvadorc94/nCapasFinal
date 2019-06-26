@@ -26,10 +26,9 @@ public class Tipof {
 	@Column(name = "pkidtipof")
 	private int pkidtipof;
 	
-	@NotEmpty(message="Ingrese el horario")
 	@NotNull
-	@Column(name = "horario")
-	private String horario;
+	@Column(name = "tipo")
+	private String tipo;
 	
 	@Column(name = "estado")
 	private boolean estado;
@@ -65,12 +64,12 @@ public class Tipof {
 		this.pkidtipof = pkidtipof;
 	}
 
-	public String getHorario() {
-		return horario;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setHorario(String horario) {
-		this.horario = horario;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public boolean isEstado() {
