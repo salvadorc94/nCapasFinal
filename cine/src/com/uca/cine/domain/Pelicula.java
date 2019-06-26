@@ -35,9 +35,9 @@ public class Pelicula {
 	@Column(name = "estado")
 	private boolean estado;
 	
-	@NotNull
-	@Column(name = "imagen")
-	private String imagen;
+	@Column(name="imagen")
+	private byte[] img;
+	
 	@NotNull
 	@Column(name = "fechacreacion")
 	private Date fechacreacion;
@@ -59,6 +59,14 @@ public class Pelicula {
 	
 	public String getEstadoDelegate() {
 		return estado == true ? "Activo":"Inactivo";
+	}
+	
+	public String getImgDelegate() {
+		if(this.img == null) return "";
+		else {
+			String imageBase64 = new String(img);
+			return imageBase64;
+		}
 	}
 
 	public int getPkidpelicula() {
@@ -85,12 +93,14 @@ public class Pelicula {
 		this.estado = estado;
 	}
 
-	public String getImagen() {
-		return imagen;
+	
+
+	public byte[] getImg() {
+		return img;
 	}
 
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
+	public void setImg(byte[] img) {
+		this.img = img;
 	}
 
 	public Date getFechacreacion() {

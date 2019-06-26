@@ -105,7 +105,7 @@ public class loginController {
 			if(results) {
 				//mav.addObject("usuario",usuario);
 				//mav.addObject("Pelicula", peliculas);
-				//mav.setViewName("peliculas");
+				mav.setViewName("listadoPeli");
 			}else {
 				if(usuario.getEstadoDelegate() == "Activo") {
 					mav.addObject("mal","Credenciales invalidas");
