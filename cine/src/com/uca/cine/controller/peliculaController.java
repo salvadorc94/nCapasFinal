@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.cine.domain.Funcion;
-import com.uca.cine.domain.HorarioxFuncion;
 import com.uca.cine.domain.Pelicula;
 import com.uca.cine.domain.Usuario;
 import com.uca.cine.services.PeliculaService;

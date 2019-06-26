@@ -29,27 +29,28 @@
 }
 </style>
 
-<title>Create Employee</title>
+<title>Formulario de reservacion</title>
 </head>
 <body>
 
 <div class="card">
 <div class="center">
-<h1>Crear Usuario</h1>
+<h1>Reserva</h1>
 
-<form:form  action="${pageContext.request.contextPath}/save" method="POST" modelAttribute="usuario">
+<form:form  action="${pageContext.request.contextPath}/reservaResumen" method="POST" modelAttribute="reserva">
 		
-		<label>Nombre: </label>
-		<form:input type="text"  path="nombre"/><br>
-		<form:errors path="nombre" cssStyle="color: #ff0000;"/><br>
+		<label>Asientos disponibles: </label><br>
+		<label>Tipo de pelicula: </label>
+		<label>Horario elegido: </label>
 		
-		<label>Apellido:  </label>
-		<form:input type="text" path="apellido"/><br>
-		<form:errors path="apellido" cssStyle="color: #ff0000;"/><br>
+		<label>Número de asientos: </label>
+		<form:input type="text"  path="nasientosreserva"/><br>
+		<form:errors path="nasientosreserva" cssStyle="color: #ff0000;"/><br>
 		
-		<label>Fecha:  </label>
-		<form:input type="date"  path="fecha"/><br>
-		<form:errors path="fecha" cssStyle="color: #ff0000;"/><br>
+		<label>Pago con saldo:  </label>
+		<!-- CHECKBOX -->
+		<form:input type="number"  path="saldoutilizar"/><br>
+		<form:errors path="saldoutilizar" cssStyle="color: #ff0000;"/><br>
 		
 		
 		<label>Direccion: </label>

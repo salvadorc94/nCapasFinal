@@ -65,10 +65,10 @@ public class loginController {
 	@RequestMapping("/save")
 	public ModelAndView guardar(@Valid @ModelAttribute Usuario user, BindingResult result,@RequestParam("pais") int pais,@RequestParam("depa") int depa,@RequestParam("muni") int muni) {
 		ModelAndView mav = new ModelAndView();
-		//if(result.hasErrors()) {
-		//	mav.setViewName("createU");
-		//	return mav;
-		//}else {
+		if(result.hasFieldErrors("nombre") || result.hasFieldErrors("apellido") || result.hasFieldErrors("fecha") || result.hasFieldErrors("direccion") || result.hasFieldErrors("nombreusuario") || result.hasFieldErrors("contraseniausuario")) {
+			mav.setViewName("createU");
+			return mav;
+		}else {
 			user.setEstado(false);
 			user.setSaldo(20);
 			user.setPais(paisservice.getOne(pais));
@@ -76,7 +76,7 @@ public class loginController {
 			user.setDepartamento(depaserv.getOne(depa));
 			user.setFecha(user.getFecha());
 			usuarioservice.insertarActualizarUsuario(user);
-		//}
+		}
 		
 		
 		//Usuario usuario = new Usuario();
@@ -108,7 +108,12 @@ public class loginController {
 				mav.addObject("peliculas", peliculas);
 				mav.setViewName("listadoPeli");
 			}else {
-				mav.addObject("mal","Credenciales invalidas o Usuario Inactivo Contactar Admin");
+				if(usuario != null) {
+					//MOSTRAR MOTIVO DE INACTIVACIÓN
+					mav.addObject("mal","Usuario Inactivo Contactar Admin");
+				}else {
+					mav.addObject("mal","Credenciales invalidas");
+				}
 				
 				mav.setViewName("login");
 			}

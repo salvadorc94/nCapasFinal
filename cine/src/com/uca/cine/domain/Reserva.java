@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
@@ -29,6 +30,7 @@ public class Reserva {
 	
 	@NotNull
 	@Min(1)
+	@Max(15)
 	@Column(name = "nasientosreserva")
 	private int nasientosreserva;
 	

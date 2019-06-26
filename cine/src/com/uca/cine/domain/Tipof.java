@@ -50,7 +50,7 @@ public class Tipof {
 	private String usuariomodificacion;
 	
 	@OneToMany(mappedBy = "tipof", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
-	private List<TipoxFuncion> tipoxfuncion;
+	private List<Funcion> funcion;
 	
 	public String getEstadoDelegate() {
 		return estado == true ? "Activo":"Inactivo";
@@ -112,14 +112,14 @@ public class Tipof {
 		this.usuariomodificacion = usuariomodificacion;
 	}
 
-	public List<TipoxFuncion> getTipoxfuncion() {
-		return tipoxfuncion;
+	public List<Funcion> getFuncion() {
+		return funcion;
 	}
 
-	public void setTipoxfuncion(List<TipoxFuncion> tipoxfuncion) {
-		this.tipoxfuncion = tipoxfuncion;
+	public void setFuncion(List<Funcion> funcion) {
+		this.funcion = funcion;
 	}
 
-		
+	
 	
 }

@@ -51,7 +51,7 @@ public class Horariof {
 	private String usuariomodificacion;
 	
 	@OneToMany(mappedBy = "horariof", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
-	private List<HorarioxFuncion> horarioxfuncion;
+	private List<Funcion> funcion;
 	
 	public String getEstadoDelegate() {
 		return estado == true ? "Activo":"Inactivo";
@@ -115,13 +115,15 @@ public class Horariof {
 		this.usuariomodificacion = usuariomodificacion;
 	}
 
-	public List<HorarioxFuncion> getHorarioxfuncion() {
-		return horarioxfuncion;
+	public List<Funcion> getFuncion() {
+		return funcion;
 	}
 
-	public void setHorarioxfuncion(List<HorarioxFuncion> horarioxfuncion) {
-		this.horarioxfuncion = horarioxfuncion;
+	public void setFuncion(List<Funcion> funcion) {
+		this.funcion = funcion;
 	}
+
+	
 	
 
 }

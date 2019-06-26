@@ -56,14 +56,17 @@ public class Funcion {
 	@JoinColumn(name = "fkidpelicula")
 	private Pelicula pelicula;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fkidtipof")
+	private Tipof tipof;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fkidhorariof")
+	private Horariof horariof;
+	
 	@OneToMany(mappedBy = "funcion", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Reserva> reservas;
 	
-	@OneToMany(mappedBy = "funcion", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
-	private List<HorarioxFuncion> horarioxfuncion;
-	
-	@OneToMany(mappedBy = "funcion", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
-	private List<TipoxFuncion> tipoxfuncion;
 	
 	public String getEstadoDelegate() {
 		return estado == true ? "Activo":"Inactivo";
@@ -141,22 +144,24 @@ public class Funcion {
 		this.reservas = reservas;
 	}
 
-	public List<HorarioxFuncion> getHorarioxfuncion() {
-		return horarioxfuncion;
-	}
-
-	public void setHorarioxfuncion(List<HorarioxFuncion> horarioxfuncion) {
-		this.horarioxfuncion = horarioxfuncion;
-	}
-
-	public List<TipoxFuncion> getTipoxfuncion() {
-		return tipoxfuncion;
-	}
-
-	public void setTipoxfuncion(List<TipoxFuncion> tipoxfuncion) {
-		this.tipoxfuncion = tipoxfuncion;
-	}
 	
+
+	public Horariof getHorariof() {
+		return horariof;
+	}
+
+	public void setHorariof(Horariof horariof) {
+		this.horariof = horariof;
+	}
+
+	public Tipof getTipof() {
+		return tipof;
+	}
+
+	public void setTipof(Tipof tipof) {
+		this.tipof = tipof;
+	}
+
 	
 
 }
