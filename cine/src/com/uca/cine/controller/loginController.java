@@ -88,8 +88,9 @@ public class loginController {
 	@RequestMapping("/login")
 	public ModelAndView validarLogin(@Valid @ModelAttribute Usuario user, BindingResult result) {
 		ModelAndView mav = new ModelAndView();
-		if(result.hasFieldErrors("nombreusuario") && result.hasFieldErrors("contraseniausuario") ) {
+		if(result.hasFieldErrors("nombreusuario") || result.hasFieldErrors("contraseniausuario") ) {
 			mav.setViewName("login");
+			return mav;
 		}else{
 			boolean results = false;
 			Usuario usuario = null;
@@ -107,11 +108,8 @@ public class loginController {
 				//mav.addObject("Pelicula", peliculas);
 				mav.setViewName("listadoPeli");
 			}else {
-				if(usuario.getEstadoDelegate() == "Activo") {
-					mav.addObject("mal","Credenciales invalidas");
-				}else {
-					mav.addObject("mal","Usuario Inactivo Contactar Admin");
-				}
+				mav.addObject("mal","Credenciales invalidas o Usuario Inactivo Contactar Admin");
+				
 				mav.setViewName("login");
 			}
 		}
