@@ -17,7 +17,7 @@ package com.uca.cine.configuration;
 
  @Configuration
  @EnableTransactionManagement
- @EnableJpaRepositories(basePackages = "com.uca.cine.repository")
+ @EnableJpaRepositories(basePackages = "com.uca.cine.repositories")
  public class JpaConfiguration {
 	 
 	 @Bean
