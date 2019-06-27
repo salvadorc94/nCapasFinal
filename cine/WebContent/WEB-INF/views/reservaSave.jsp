@@ -37,17 +37,17 @@
 <div class="center">
 <h1>Reserva</h1>
 
-<form:form  action="${pageContext.request.contextPath}/guardarReserva?cp=${pelicula.pkidpelicula}&cu=${usuario.pkidusuario}&fu=${funcion.pkidfuncion}" method="POST" modelAttribute="reserva">
+<form  action="${pageContext.request.contextPath}/guardarReserva?cu=${usuario.pkidusuario}&fu=${funcion.pkidfuncion}" method="POST">
 		
 		<label>Nombre pelicula: ${pelicula.nombre}</label><br>
 		<label>Horario elegido: ${funcion.horariof.horario} </label><br>
-		<label>Asientos: ${reserva.nasientosreserva} </label><br>
-		<label>Tipo de pelicula: ${funcion.tipof.tipo} </label><br>
-		<label>Saldo a utilizar: ${reserva.saldoutilizar} </label><br>
-		<label>Saldo remanente: ${reserva.saldorestante}</label><br>
+		<label>Asientos: ${reserva.nasientosreserva} </label><br> <input type="hidden" name="nasientos" id="nasientos" value="${reserva.nasientosreserva}"/>
+		<label>Tipo de pelicula: ${funcion.tipof.tipo} </label><br> 
+		<label>Saldo a utilizar: ${reserva.saldoutilizar} </label><br> <input type="hidden" name="saldoU" id="saldoU" value="${reserva.saldoutilizar}"/>
+		<label>Saldo remanente: ${reserva.saldorestante}</label><br> <input type="hidden" name="saldoR" id="saldoR" value="${reserva.saldorestante}"/>
 		<label>Gran total: ${granTotal}</label><br>
 		<input type="submit" value="Finalizar transacción" class="btn btn-success"><br> 
-	</form:form>
+	</form>
 </div>
 </div>
 

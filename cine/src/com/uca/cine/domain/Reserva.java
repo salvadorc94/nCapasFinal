@@ -36,13 +36,13 @@ public class Reserva {
 	
 	@NotNull
 	@Column(name = "saldoutilizar")
-	private float saldoutilizar;
+	private int saldoutilizar;
 	
 	@Column(name = "saldorestante")
-	private float saldorestante;
+	private int saldorestante;
 	
 	@Column(name = "fechareserva")
-	private Date fechareserva;
+	private String fechareserva;
 	
 	//FK ID USUARIO
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -64,23 +64,25 @@ public class Reserva {
 	public void setNasientosreserva(int nasientosreserva) {
 		this.nasientosreserva = nasientosreserva;
 	}
-	public float getSaldoutilizar() {
+	
+	
+	public int getSaldoutilizar() {
 		return saldoutilizar;
 	}
-	public void setSaldoutilizar(float saldoutilizar) {
-		this.saldoutilizar = saldoutilizar;
-	}
-	public float getSaldorestante() {
+	public int getSaldorestante() {
 		return saldorestante;
 	}
-	public void setSaldorestante(float saldorestante) {
+	public void setSaldorestante(int saldorestante) {
 		this.saldorestante = saldorestante;
 	}
-	public Date getFechareserva() {
+	public String getFechareserva() {
 		return fechareserva;
 	}
-	public void setFechareserva(Date fechareserva) {
+	public void setFechareserva(String fechareserva) {
 		this.fechareserva = fechareserva;
+	}
+	public void setSaldoutilizar(int saldoutilizar) {
+		this.saldoutilizar = saldoutilizar;
 	}
 	public Usuario getUsuario() {
 		return usuario;

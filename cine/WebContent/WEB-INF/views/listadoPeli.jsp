@@ -21,6 +21,7 @@
 </head>
 <body>
 	<h2 id="prueba">Listado de Peliculas.</h2>
+	<input type="button" class="btn btn-primary" value="Ver historial" onclick="location.href='${pageContext.request.contextPath}/view?cu=${usuario.pkidusuario}'"/>
 	<br>
 	<div class="table-responsive center">          
   		<table class="table table-hover">

@@ -63,7 +63,7 @@ public class Usuario {
 	private String contraseniausuario;
 	
 	@Column(name = "saldo")
-	private float saldo;
+	private int saldo;
 
 	//FK_PAIS
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -88,6 +88,9 @@ public class Usuario {
 	
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Reserva> reservas;
+	
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
+	private List<Historial> historial;
 	
 	public Usuario() {
 		super();
@@ -133,6 +136,12 @@ public class Usuario {
 	}
 	
 	
+	public List<Historial> getHistorial() {
+		return historial;
+	}
+	public void setHistorial(List<Historial> historial) {
+		this.historial = historial;
+	}
 	public String getNombreusuario() {
 		return nombreusuario;
 	}
@@ -146,10 +155,11 @@ public class Usuario {
 	public void setContraseniausuario(String contraseniausuario) {
 		this.contraseniausuario = contraseniausuario;
 	}
-	public float getSaldo() {
+	
+	public int getSaldo() {
 		return saldo;
 	}
-	public void setSaldo(float saldo) {
+	public void setSaldo(int saldo) {
 		this.saldo = saldo;
 	}
 	public Pais getPais() {
