@@ -46,4 +46,9 @@ public class UsuarioServiceImp implements UsuarioService {
 		return usuario;
 	}
 
+	@Override
+	public List<Usuario> listar() {
+		return usuariorepo.findAll();
+	}
+
 }

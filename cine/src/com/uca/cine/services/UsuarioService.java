@@ -13,6 +13,8 @@ public interface UsuarioService {
 	public Usuario obtenerUsuario(int id);
 	
 	public Usuario findByNombreusuarioAndContraseniausuario (String user, String pass);
+	
+	public List<Usuario> listar();
 
 
 }

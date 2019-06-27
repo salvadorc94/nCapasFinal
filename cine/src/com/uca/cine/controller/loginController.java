@@ -20,6 +20,7 @@ import com.uca.cine.domain.Departamento;
 import com.uca.cine.domain.Municipio;
 import com.uca.cine.domain.Pais;
 import com.uca.cine.domain.Pelicula;
+import com.uca.cine.domain.Tipo;
 import com.uca.cine.services.DepartamentoService;
 import com.uca.cine.services.MunicipioService;
 import com.uca.cine.services.PaisService;
@@ -101,6 +102,9 @@ public class loginController {
 			user.setMunicipio(muniserv.getOne(muni));
 			user.setDepartamento(depaserv.getOne(depa));
 			user.setFecha(user.getFecha());
+			Tipo tipo = new Tipo();
+			tipo.setPkidtipo(2);
+			user.setTipo(tipo);
 			usuarioservice.insertarActualizarUsuario(user);
 		}
 		
@@ -131,9 +135,15 @@ public class loginController {
 			HttpSession sesion = request.getSession();
 			if(results) {
 				sesion.setAttribute("usuario", usuario);
-				mav.addObject("usuario",usuario);
-				mav.addObject("peliculas", peliculas);
-				mav.setViewName("listadoPeli");
+				if(usuario.getTipo().equals("Cliente")) {
+
+					mav.addObject("usuario",usuario);
+					mav.addObject("peliculas", peliculas);
+					mav.setViewName("listadoPeli");
+				}else {
+					mav.addObject("usuario",usuarioservice.listar());
+					mav.setViewName("adminModulo");
+				}
 			}else {
 				if(usuario != null) {
 					//MOSTRAR MOTIVO DE INACTIVACIÓN
