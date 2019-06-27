@@ -42,14 +42,10 @@
         				</td>	
         				<td>${funciones.asientos}</td>
         				<td>
-        				<c:forEach items="${funciones.tipoxfuncion}" var="tipos">
-        						<p>${tipos.tipof.tipo}</p>
-        					</c:forEach>
+        					<p>${funciones.tipof.tipo}</p>
         				</td>
         				<td>
-        					<c:forEach items="${funciones.horarioxfuncion}" var="horarios">
-        						<p>${horarios.horariof.horario}</p>
-        					</c:forEach>
+        						<p>${funciones.horariof.horario}</p>
         				
         				</td>
         				

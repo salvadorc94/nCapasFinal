@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 import com.sun.istack.NotNull;
@@ -29,26 +30,21 @@ public class Funcion {
 	@Column(name = "pkidfuncion")
 	private int pkidfuncion;
 	
-	@Min(1)
 	@Column(name = "asientos")
 	private int asientos;
 	
 	@Column(name = "estado")
 	private boolean estado;
 	
-	@NotNull
 	@Column(name = "fechacreacion")
 	private Date fechacreacion;
 	
-	@NotNull
 	@Column(name = "usuariocreacion")
 	private String usuariocreacion;
 	
-	@NotNull
 	@Column(name = "fechamodificacion")
 	private Date fechamodificacion;
 	
-	@NotNull
 	@Column(name = "usuariomodificacion")
 	private String usuariomodificacion;
 	
@@ -56,14 +52,17 @@ public class Funcion {
 	@JoinColumn(name = "fkidpelicula")
 	private Pelicula pelicula;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fkidtipof")
+	private Tipof tipof;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fkidhorariof")
+	private Horariof horariof;
+	
 	@OneToMany(mappedBy = "funcion", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Reserva> reservas;
 	
-	@OneToMany(mappedBy = "funcion", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
-	private List<HorarioxFuncion> horarioxfuncion;
-	
-	@OneToMany(mappedBy = "funcion", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
-	private List<TipoxFuncion> tipoxfuncion;
 	
 	public String getEstadoDelegate() {
 		return estado == true ? "Activo":"Inactivo";
@@ -141,22 +140,24 @@ public class Funcion {
 		this.reservas = reservas;
 	}
 
-	public List<HorarioxFuncion> getHorarioxfuncion() {
-		return horarioxfuncion;
-	}
-
-	public void setHorarioxfuncion(List<HorarioxFuncion> horarioxfuncion) {
-		this.horarioxfuncion = horarioxfuncion;
-	}
-
-	public List<TipoxFuncion> getTipoxfuncion() {
-		return tipoxfuncion;
-	}
-
-	public void setTipoxfuncion(List<TipoxFuncion> tipoxfuncion) {
-		this.tipoxfuncion = tipoxfuncion;
-	}
 	
+
+	public Horariof getHorariof() {
+		return horariof;
+	}
+
+	public void setHorariof(Horariof horariof) {
+		this.horariof = horariof;
+	}
+
+	public Tipof getTipof() {
+		return tipof;
+	}
+
+	public void setTipof(Tipof tipof) {
+		this.tipof = tipof;
+	}
+
 	
 
 }

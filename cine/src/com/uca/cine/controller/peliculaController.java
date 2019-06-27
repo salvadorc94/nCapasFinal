@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.cine.domain.Funcion;
-import com.uca.cine.domain.HorarioxFuncion;
+import com.uca.cine.domain.Historial;
 import com.uca.cine.domain.Pelicula;
 import com.uca.cine.domain.Usuario;
 import com.uca.cine.services.PeliculaService;
@@ -55,4 +55,20 @@ public class peliculaController {
 		return mav;
 	}
 	
+	@RequestMapping("/historial")
+	public ModelAndView historial(@RequestParam("cu") Integer cu) {
+		ModelAndView mav = new ModelAndView();
+		List<Historial> historial = null;
+		Usuario user = null;
+		try {
+			user = usuarioservice.obtenerUsuario(cu);
+		}catch(Exception e) {}
+		
+		historial = user.getHistorial();
+		
+		mav.addObject("usuario",user);
+		mav.addObject("historial",historial);
+		mav.setViewName("listadoHistorial");
+		return mav;
+	}
 }

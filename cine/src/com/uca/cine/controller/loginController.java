@@ -2,6 +2,9 @@ package com.uca.cine.controller;
 
 import java.util.List;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +41,35 @@ public class loginController {
 	@Autowired
 	public MunicipioService muniserv;
 	
-	@RequestMapping("/")
-	public ModelAndView index() {
+	@RequestMapping("/Salir")
+	public ModelAndView salir(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
+		HttpSession sesion = request.getSession();
+		sesion.invalidate();
 		Usuario user = new Usuario();
 		mav.addObject("usuario",user);
 		mav.setViewName("login");
+		return mav;
+	}
+	
+	@RequestMapping("/")
+	public ModelAndView index(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		HttpSession sesion = request.getSession();
+		if(sesion.getAttribute("usuario")== null) {
+			Usuario user = new Usuario();
+			mav.addObject("usuario",user);
+			mav.setViewName("login");
+		}else {
+			List<Pelicula> peliculas = null;
+			try {
+				peliculas = peliculaservice.listar();
+			}catch (Exception e){}
+			mav.addObject("usuario",sesion.getAttribute("usuario"));
+			mav.addObject("peliculas", peliculas);
+			mav.setViewName("listadoPeli");
+		}
+		
 		return mav;
 	}
 	
@@ -65,10 +91,10 @@ public class loginController {
 	@RequestMapping("/save")
 	public ModelAndView guardar(@Valid @ModelAttribute Usuario user, BindingResult result,@RequestParam("pais") int pais,@RequestParam("depa") int depa,@RequestParam("muni") int muni) {
 		ModelAndView mav = new ModelAndView();
-		//if(result.hasErrors()) {
-		//	mav.setViewName("createU");
-		//	return mav;
-		//}else {
+		if(result.hasFieldErrors("nombre") || result.hasFieldErrors("apellido") || result.hasFieldErrors("fecha") || result.hasFieldErrors("direccion") || result.hasFieldErrors("nombreusuario") || result.hasFieldErrors("contraseniausuario")) {
+			mav.setViewName("createU");
+			return mav;
+		}else {
 			user.setEstado(false);
 			user.setSaldo(20);
 			user.setPais(paisservice.getOne(pais));
@@ -76,7 +102,7 @@ public class loginController {
 			user.setDepartamento(depaserv.getOne(depa));
 			user.setFecha(user.getFecha());
 			usuarioservice.insertarActualizarUsuario(user);
-		//}
+		}
 		
 		
 		//Usuario usuario = new Usuario();
@@ -86,7 +112,7 @@ public class loginController {
 	}
 	
 	@RequestMapping("/login")
-	public ModelAndView validarLogin(@Valid @ModelAttribute Usuario user, BindingResult result) {
+	public ModelAndView validarLogin(@Valid @ModelAttribute Usuario user, BindingResult result,HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		if(result.hasFieldErrors("nombreusuario") || result.hasFieldErrors("contraseniausuario") ) {
 			mav.setViewName("login");
@@ -102,13 +128,19 @@ public class loginController {
 			}catch (Exception e){
 				
 			}
-			
+			HttpSession sesion = request.getSession();
 			if(results) {
+				sesion.setAttribute("usuario", usuario);
 				mav.addObject("usuario",usuario);
 				mav.addObject("peliculas", peliculas);
 				mav.setViewName("listadoPeli");
 			}else {
-				mav.addObject("mal","Credenciales invalidas o Usuario Inactivo Contactar Admin");
+				if(usuario != null) {
+					//MOSTRAR MOTIVO DE INACTIVACIÓN
+					mav.addObject("mal","Usuario Inactivo Contactar Admin");
+				}else {
+					mav.addObject("mal","Credenciales invalidas");
+				}
 				
 				mav.setViewName("login");
 			}

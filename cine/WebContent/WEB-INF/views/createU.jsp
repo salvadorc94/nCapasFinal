@@ -35,7 +35,7 @@
 
 <div class="card">
 <div class="center">
-<h1>Create Employee</h1>
+<h1>Crear Usuario</h1>
 
 <form:form  action="${pageContext.request.contextPath}/save" method="POST" modelAttribute="usuario">
 		
@@ -71,12 +71,12 @@
 				<option value="${paises.pkidpais}">${paises.pais}</option>
 			</c:forEach>
 		</select><br>
-		<select id="depa" name="depa">
+		<select id="depa" name="depa" style="display:none">
 			<c:forEach items="${listaDepa}" var="depas">
 				<option value="${depas.pkiddepartamento}">${depas.departamento}</option>
 			</c:forEach>
 		</select><br>
-		<select id="muni" name="muni">
+		<select id="muni" name="muni" style="display:none">
 			<c:forEach items="${listaMuni}" var="munis">
 				<option value="${munis.pkidmunicipio}">${munis.municipio}</option>
 			</c:forEach>
@@ -90,7 +90,7 @@
 <script>
 function myFunction() {
   var x = document.getElementById("pais").value;
-  if(x != 53){
+  if(x != 54){
 	  document.getElementById("depa").style.display = 'none';
 	  document.getElementById("muni").style.display = 'none';
   }else{
