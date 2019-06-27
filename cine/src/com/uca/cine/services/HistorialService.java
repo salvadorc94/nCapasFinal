@@ -11,4 +11,6 @@ public interface HistorialService {
 	public Historial obtenerFuncion(int id);
 	 
 	public void insertarActualizarHistorial(Historial h);
+	
+	public List<Historial> filtrarFechas(int code, String fechai, String fechaf);
 }

@@ -21,7 +21,8 @@
 </head>
 <body>
 	<h2 id="prueba">Listado de Peliculas.</h2>
-	<input type="button" class="btn btn-primary" value="Ver historial" onclick="location.href='${pageContext.request.contextPath}/view?cu=${usuario.pkidusuario}'"/>
+	<input type="button" class="btn btn-primary" value="Ver historial" onclick="location.href='${pageContext.request.contextPath}/historial?cu=${usuario.pkidusuario}'"/>
+	<input type="button" class="btn btn-danger" value="Salir" onclick="location.href='${pageContext.request.contextPath}/Salir'"/>
 	<br>
 	<div class="table-responsive center">          
   		<table class="table table-hover">

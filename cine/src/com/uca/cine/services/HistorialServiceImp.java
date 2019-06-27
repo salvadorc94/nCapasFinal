@@ -29,4 +29,9 @@ public class HistorialServiceImp implements HistorialService {
 		hrepository.save(h);
 	}
 
+	@Override
+	public List<Historial> filtrarFechas(int code, String fechai, String fechaf) {
+		return hrepository.filtrarFechas(code, fechai, fechaf);
+	}
+
 }
