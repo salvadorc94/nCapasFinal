@@ -38,12 +38,9 @@ public class Reserva {
 	@Column(name = "saldoutilizar")
 	private float saldoutilizar;
 	
-	@NotNull
 	@Column(name = "saldorestante")
 	private float saldorestante;
 	
-	@NotEmpty(message="Ingrese una fecha")
-	@NotNull
 	@Column(name = "fechareserva")
 	private Date fechareserva;
 	

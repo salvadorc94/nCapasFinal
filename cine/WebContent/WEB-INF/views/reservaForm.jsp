@@ -37,68 +37,70 @@
 <div class="center">
 <h1>Reserva</h1>
 
-<form:form  action="${pageContext.request.contextPath}/reservaResumen" method="POST" modelAttribute="reserva">
+<form:form  action="${pageContext.request.contextPath}/reservaResumen?cp=${pelicula.pkidpelicula}&cu=${usuario.pkidusuario}&fu=${funcion.pkidfuncion}" method="POST" modelAttribute="reserva">
 		
-		<label>Asientos disponibles: </label><br>
-		<label>Tipo de pelicula: </label>
-		<label>Horario elegido: </label>
+		<label>Asientos disponibles: ${funcion.asientos} </label><br>
+		<label>Tipo de pelicula: ${funcion.tipof.tipo} </label><br>
+		<label>Horario elegido: ${funcion.horariof.horario} </label><br>
+		
 		
 		<label>Número de asientos: </label>
-		<form:input type="text"  path="nasientosreserva"/><br>
+		<form:input id="asientos" type="text"  path="nasientosreserva" onchange="verificarAsiento()"/><br>
 		<form:errors path="nasientosreserva" cssStyle="color: #ff0000;"/><br>
 		
+		<label>Total: </label>
+		<div id="total">0</div><br>
+		
+		<label>Saldo disponible: ${usuario.saldo} </label><br>
 		<label>Pago con saldo:  </label>
-		<!-- CHECKBOX -->
-		<form:input type="number"  path="saldoutilizar"/><br>
+		<input id="pagoS" type="checkbox" name="pago" value="Pagar con Saldo" onClick="myFunction()">
+		<input id="flag" type="hidden" value="true"/>
+		<form:input value="0" id="saldo" type="number"  path="saldoutilizar"  style="display:none" onchange="verificarSaldo()"/><br>
 		<form:errors path="saldoutilizar" cssStyle="color: #ff0000;"/><br>
-		
-		
-		<label>Direccion: </label>
-		<form:input type="text"  path="direccion"/><br>
-		<form:errors path="direccion" cssStyle="color: #ff0000;"/><br>
-		
-		<label>Nombre de Usuario: </label>
-		<form:input type="text"  path="nombreusuario"/><br>
-		<form:errors path="nombreusuario" cssStyle="color: #ff0000;"/><br>
-		
-		<label>Contrasenia: </label>
-		<form:input type="password"  path="contraseniausuario"/><br>
-		<form:errors path="contraseniausuario" cssStyle="color: #ff0000;"/><br>
-		
-		<label>Pais: </label>
-		<select id="pais" name="pais" onchange="myFunction();">
-			<option value="#">Seleccionar Pais</option>
-			<c:forEach items="${listaPais}" var="paises">
-				<option value="${paises.pkidpais}">${paises.pais}</option>
-			</c:forEach>
-		</select><br>
-		<select id="depa" name="depa" style="display:none">
-			<c:forEach items="${listaDepa}" var="depas">
-				<option value="${depas.pkiddepartamento}">${depas.departamento}</option>
-			</c:forEach>
-		</select><br>
-		<select id="muni" name="muni" style="display:none">
-			<c:forEach items="${listaMuni}" var="munis">
-				<option value="${munis.pkidmunicipio}">${munis.municipio}</option>
-			</c:forEach>
-		</select><br>
-		
-		<input type="submit" value="Save" class="btn btn-success"><br> 
+				
+		<input type="submit" value="Reservar" class="btn btn-success"><br> 
 	</form:form>
 </div>
 </div>
 
 <script>
 function myFunction() {
-  var x = document.getElementById("pais").value;
-  if(x != 54){
-	  document.getElementById("depa").style.display = 'none';
-	  document.getElementById("muni").style.display = 'none';
-  }else{
-	  document.getElementById("depa").style.display = 'inline';
-	  document.getElementById("muni").style.display = 'inline';
-  }
+	
+	if(document.getElementById("flag").value == "false"){
+		document.getElementById("flag").value = "true"
+		document.getElementById("saldo").value = "";
+		document.getElementById("saldo").style.display = 'none';
+	}else{
+		document.getElementById("flag").value = "false"
+		document.getElementById("saldo").value = "";
+		document.getElementById("saldo").style.display = 'inline';	
+	}	
 }
+
+	function verificarAsiento(){
+		var x = document.getElementById("asientos").value;
+		var y = ${funcion.asientos};
+		
+		if(x>y){
+			alert("No hay suficientes asientos");
+			document.getElementById("asientos").value = "";
+		}else{
+			var t = x*3;
+			document.getElementById("total").innerHTML = t;
+		}
+		
+	}
+	
+	function verificarSaldo(){
+		var x= document.getElementById("saldo").value;
+		var y = ${usuario.saldo};
+		
+		if(y<x){
+			alert("No hay suficiente saldo");
+			document.getElementById("saldo").value = "";
+		}
+		
+	}
 </script>
 
 

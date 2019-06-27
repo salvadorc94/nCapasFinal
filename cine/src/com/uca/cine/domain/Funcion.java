@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 import com.sun.istack.NotNull;
@@ -30,25 +31,22 @@ public class Funcion {
 	private int pkidfuncion;
 	
 	@Min(1)
+	@Max(15)
 	@Column(name = "asientos")
 	private int asientos;
 	
 	@Column(name = "estado")
 	private boolean estado;
 	
-	@NotNull
 	@Column(name = "fechacreacion")
 	private Date fechacreacion;
 	
-	@NotNull
 	@Column(name = "usuariocreacion")
 	private String usuariocreacion;
 	
-	@NotNull
 	@Column(name = "fechamodificacion")
 	private Date fechamodificacion;
 	
-	@NotNull
 	@Column(name = "usuariomodificacion")
 	private String usuariomodificacion;
 	
