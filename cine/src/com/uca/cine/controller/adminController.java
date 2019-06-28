@@ -119,6 +119,9 @@ public class adminController {
 				user.setTipo(tipoU);
 			}
 			usuarioservice.insertarActualizarUsuario(user);
+			try {
+				users = usuarioservice.listar();
+			}catch(Exception e) {}
 			mav.addObject("usuario", users);
 			mav.setViewName("adminModulo");
 		}
