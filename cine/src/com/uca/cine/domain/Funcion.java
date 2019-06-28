@@ -30,6 +30,7 @@ public class Funcion {
 	@Column(name = "pkidfuncion")
 	private int pkidfuncion;
 	
+	@Min(1)
 	@Column(name = "asientos")
 	private int asientos;
 	
@@ -37,13 +38,13 @@ public class Funcion {
 	private boolean estado;
 	
 	@Column(name = "fechacreacion")
-	private Date fechacreacion;
+	private String fechacreacion;
 	
 	@Column(name = "usuariocreacion")
 	private String usuariocreacion;
 	
 	@Column(name = "fechamodificacion")
-	private Date fechamodificacion;
+	private String fechamodificacion;
 	
 	@Column(name = "usuariomodificacion")
 	private String usuariomodificacion;
@@ -92,13 +93,7 @@ public class Funcion {
 		this.estado = estado;
 	}
 
-	public Date getFechacreacion() {
-		return fechacreacion;
-	}
-
-	public void setFechacreacion(Date fechacreacion) {
-		this.fechacreacion = fechacreacion;
-	}
+	
 
 	public String getUsuariocreacion() {
 		return usuariocreacion;
@@ -108,11 +103,21 @@ public class Funcion {
 		this.usuariocreacion = usuariocreacion;
 	}
 
-	public Date getFechamodificacion() {
+	
+
+	public String getFechacreacion() {
+		return fechacreacion;
+	}
+
+	public void setFechacreacion(String fechacreacion) {
+		this.fechacreacion = fechacreacion;
+	}
+
+	public String getFechamodificacion() {
 		return fechamodificacion;
 	}
 
-	public void setFechamodificacion(Date fechamodificacion) {
+	public void setFechamodificacion(String fechamodificacion) {
 		this.fechamodificacion = fechamodificacion;
 	}
 

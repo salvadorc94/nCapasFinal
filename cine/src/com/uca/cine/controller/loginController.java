@@ -93,6 +93,13 @@ public class loginController {
 	public ModelAndView guardar(@Valid @ModelAttribute Usuario user, BindingResult result,@RequestParam("pais") int pais,@RequestParam("depa") int depa,@RequestParam("muni") int muni) {
 		ModelAndView mav = new ModelAndView();
 		if(result.hasFieldErrors("nombre") || result.hasFieldErrors("apellido") || result.hasFieldErrors("fecha") || result.hasFieldErrors("direccion") || result.hasFieldErrors("nombreusuario") || result.hasFieldErrors("contraseniausuario")) {
+			List<Pais> paises = paisservice.listar();
+			List<Departamento> deptos = depaserv.listar();
+			List<Municipio> munis = muniserv.listar();
+			mav.addObject("usuario", user);
+			mav.addObject("listaPais",paises);
+			mav.addObject("listaDepa", deptos);
+			mav.addObject("listaMuni", munis);
 			mav.setViewName("createU");
 			return mav;
 		}else {

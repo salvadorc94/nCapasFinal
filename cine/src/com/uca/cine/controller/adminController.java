@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.cine.domain.Departamento;
+import com.uca.cine.domain.Funcion;
 import com.uca.cine.domain.Horariof;
 import com.uca.cine.domain.Municipio;
 import com.uca.cine.domain.Pais;
@@ -295,7 +296,7 @@ public class adminController {
 		return mav;
 	}
 	@RequestMapping("/saveP")
-	public ModelAndView saveP(@Valid @ModelAttribute Pelicula pelicula, BindingResult result,@RequestParam("cu") int cu,@RequestParam("usuarioC") String C) {
+	public ModelAndView saveP(@RequestParam("xd") String ruta,@Valid @ModelAttribute Pelicula pelicula, BindingResult result,@RequestParam("cu") int cu,@RequestParam("usuarioC") String C) {
 		ModelAndView mav = new ModelAndView();
 		if(result.hasErrors()) {
 			mav.setViewName("/adminForms/crearPelicula");
@@ -310,6 +311,8 @@ public class adminController {
 				annio = Integer.toString(c.get(Calendar.YEAR));
 				String fecha = annio.concat("-"+mes+"-"+dia);
 				pelicula.setFechacreacion(fecha);
+				String[] base = ruta.split(",");
+				pelicula.setImg(base[1].getBytes());
 			}else {
 				pelicula.setUsuariomodificacion(C);
 				String dia, mes,annio;
@@ -319,7 +322,10 @@ public class adminController {
 				annio = Integer.toString(c.get(Calendar.YEAR));
 				String fecha = annio.concat("-"+mes+"-"+dia);
 				pelicula.setFechamodificacion(fecha);
+				String[] base = ruta.split(",");
+				pelicula.setImg(base[1].getBytes());
 			}
+			
 			try {
 				peliculaservice.insertarActualizar(pelicula);
 			}catch(Exception e) {}
@@ -329,6 +335,102 @@ public class adminController {
 		mav.addObject("peliculas",peliculas);
 		mav.addObject("usuario", user);
 		mav.setViewName("/adminForms/listaPelicula");
+		return mav;
+	}
+	
+	@RequestMapping("/adminF")
+	public ModelAndView adminF(@RequestParam("cu") int cu) {
+		ModelAndView mav = new ModelAndView();
+		List<Funcion> funciones = funcionservice.listarFunciones();
+		Usuario user = usuarioservice.obtenerUsuario(cu);
+		mav.addObject("funciones",funciones);
+		mav.addObject("usuario", user);
+		mav.setViewName("/adminForms/listaFuncion");
+		return mav;
+	}
+	@RequestMapping("/createF")
+	public ModelAndView createF(@RequestParam("cu") int ti) {
+		ModelAndView mav = new ModelAndView();
+		Funcion funcion = new Funcion();
+		Usuario user = usuarioservice.obtenerUsuario(ti);
+		mav.addObject("funcion",funcion);
+		mav.addObject("usuario", user);
+		List<Pelicula> peliculas = peliculaservice.listar();
+		List<Horariof> horarios = horariofservice.listar();
+		List<Tipof> tipos = tipofservice.listar();
+		mav.addObject("pelis", peliculas);
+		mav.addObject("horarios", horarios);
+		mav.addObject("tipos", tipos);
+		mav.setViewName("/adminForms/crearFuncion");
+		return mav;
+	}
+	@RequestMapping("/editF")
+	public ModelAndView editF(@RequestParam("cu") int ti,@RequestParam("c") int c) {
+		ModelAndView mav = new ModelAndView();
+		Funcion funcion = funcionservice.obtenerFuncion(c);
+		Usuario user = usuarioservice.obtenerUsuario(ti);
+		mav.addObject("funcion",funcion);
+		mav.addObject("usuario", user);
+		List<Pelicula> peliculas = peliculaservice.listar();
+		List<Horariof> horarios = horariofservice.listar();
+		List<Tipof> tipos = tipofservice.listar();
+		mav.addObject("pelis", peliculas);
+		mav.addObject("horarios", horarios);
+		mav.addObject("tipos", tipos);
+		mav.setViewName("/adminForms/crearFuncion");
+		return mav;
+	}
+	//pelis horas tipo
+	@RequestMapping("/saveF")
+	public ModelAndView saveF(@RequestParam("pelis") int cpeli,@RequestParam("horas") int chora,@RequestParam("tipo") int ctipo,@Valid @ModelAttribute Funcion funcion, BindingResult result,@RequestParam("cu") int cu,@RequestParam("usuarioC") String C) {
+		ModelAndView mav = new ModelAndView();
+		if(result.hasErrors()) {
+			Usuario user = usuarioservice.obtenerUsuario(cu);
+			List<Pelicula> peliculas = peliculaservice.listar();
+			List<Horariof> horarios = horariofservice.listar();
+			List<Tipof> tipos = tipofservice.listar();
+			mav.addObject("pelis", peliculas);
+			mav.addObject("horarios", horarios);
+			mav.addObject("usuario", user);
+			mav.addObject("tipos", tipos);
+			mav.setViewName("/adminForms/crearFuncion");
+			return mav;
+		}else {
+			if(funcion.getUsuariocreacion() == null || funcion.getUsuariocreacion() == "" ) {
+				funcion.setUsuariocreacion(C);
+				String dia, mes,annio;
+				Calendar c = Calendar.getInstance();
+				dia = Integer.toString(c.get(Calendar.DATE));
+				mes =Integer.toString(c.get(Calendar.MONTH)+1);
+				annio = Integer.toString(c.get(Calendar.YEAR));
+				String fecha = annio.concat("-"+mes+"-"+dia);
+				funcion.setFechacreacion(fecha);
+			}else {
+				funcion.setUsuariomodificacion(C);
+				String dia, mes,annio;
+				Calendar c = Calendar.getInstance();
+				dia = Integer.toString(c.get(Calendar.DATE));
+				mes =Integer.toString(c.get(Calendar.MONTH)+1);
+				annio = Integer.toString(c.get(Calendar.YEAR));
+				String fecha = annio.concat("-"+mes+"-"+dia);
+				funcion.setFechamodificacion(fecha);
+			}
+			Pelicula peli = peliculaservice.obtenerUno(cpeli);
+			Horariof hora = horariofservice.obtenerUno(chora);
+			Tipof tipo = tipofservice.obtenerUno(ctipo);
+			funcion.setPelicula(peli);
+			funcion.setHorariof(hora);
+			funcion.setTipof(tipo);
+			
+			try {
+				funcionservice.insertarActualizarFuncion(funcion);
+			}catch(Exception e) {}
+		}
+		List<Funcion> funciones = funcionservice.listarFunciones();
+		Usuario user = usuarioservice.obtenerUsuario(cu);
+		mav.addObject("funciones",funciones);
+		mav.addObject("usuario", user);
+		mav.setViewName("/adminForms/listaFuncion");
 		return mav;
 	}
 	

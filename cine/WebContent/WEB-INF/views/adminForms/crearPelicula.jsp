@@ -43,6 +43,7 @@
 		<form:input type="hidden"  path="usuariocreacion"/>
 		<form:input type="hidden"  path="usuariomodificacion"/>
 		<form:input type="hidden" path="fechacreacion"/>
+		<form:input type="hidden" path="img"/>
 		<input type="hidden" name="usuarioC" value="${usuario.nombreusuario}"/>
 		<label>Añadir nueva pelicula: </label>
 		<form:input type="text"  path="nombre"/><br>
@@ -53,8 +54,9 @@
   		<form:radiobutton name="estado" value="false" path="estado"/>Inactivo<br>
   		
   		<label>Imagen: </label>
+  		<input id="xd" name="xd" type="hidden">
   		<img height="300px" width="200px" id="mi_imagen" src="" alt="">
-  		<form:input type="file" path="img" onchange="encodeImagetoBase64(this)"/>
+  		<input type="file" onchange="encodeImagetoBase64(this)"/>
 		<input type="submit" value="Save" class="btn btn-success"><br> 
 	</form:form>
 </div>
@@ -68,7 +70,7 @@
 	    $(".link").attr("href",reader.result);
 	    $(".link").text(reader.result);
 	    $("#mi_imagen").attr("src",reader.result);
-	    
+	    $("#xd").val(reader.result);
 	  }
 	  reader.readAsDataURL(file);
 	}
