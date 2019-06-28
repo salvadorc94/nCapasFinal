@@ -37,7 +37,7 @@
 <div class="center">
 <h1>Crear Usuario</h1>
 
-<form:form  action="${pageContext.request.contextPath}/saveU" method="POST" modelAttribute="usuario">
+<form:form  action="${pageContext.request.contextPath}/saveU?cu=${cuser.pkidusuario}" method="POST" modelAttribute="usuario">
 		<form:input type="hidden" name="cod" path="pkidusuario"/>
 		
 		<label>Nombre: </label>
