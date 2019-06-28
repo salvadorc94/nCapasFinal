@@ -172,6 +172,7 @@ public class loginController {
 			}else {
 				if(usuario != null) {
 					//MOSTRAR MOTIVO DE INACTIVACIÓN
+					mav.addObject("mal2",usuario.getDescripcion());
 					mav.addObject("mal","Usuario Inactivo Contactar Admin");
 				}else {
 					mav.addObject("mal","Credenciales invalidas");

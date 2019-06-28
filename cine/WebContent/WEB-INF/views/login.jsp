@@ -61,7 +61,8 @@ INGRESA TUS CREDENCIALES
 		<br><br>
 		<input type="submit" value="&nbsp &nbsp &nbsp Entrar &nbsp &nbsp &nbsp  " class="btn btn-primary"> &nbsp &nbsp &nbsp &nbsp
 		<input type="button" class="btn btn-info" value="Crear Usuario" onclick="location.href='${pageContext.request.contextPath}/edit'"><br>
-		<label><p>${mal}</p></label>
+		<label><p>${mal}</p></label><br>
+		<label><p>${mal2}</p></label>
 	</form:form>
 </div>
 </div>
