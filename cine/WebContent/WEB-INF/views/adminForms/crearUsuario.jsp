@@ -121,6 +121,7 @@
 		<c:set var = "muniU" value = "${usuario.municipio.pkidmunicipio}"/>
 		<select id="muni" name="muni">
 		<option value="1">Seleccionar Municipio</option>
+		
 			<c:forEach items="${listaMuni}" var="munis">
 				<c:choose>
 					<c:when test="${muniU == munis.pkidmunicipio}">
