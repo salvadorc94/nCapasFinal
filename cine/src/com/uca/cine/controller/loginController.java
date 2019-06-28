@@ -58,6 +58,7 @@ public class loginController {
 		ModelAndView mav = new ModelAndView();
 		HttpSession sesion = request.getSession();
 		if(sesion.getAttribute("usuario")== null) {
+			
 			Usuario user = new Usuario();
 			mav.addObject("usuario",user);
 			mav.setViewName("login");
