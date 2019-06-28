@@ -19,6 +19,7 @@ import com.uca.cine.domain.Departamento;
 import com.uca.cine.domain.Horariof;
 import com.uca.cine.domain.Municipio;
 import com.uca.cine.domain.Pais;
+import com.uca.cine.domain.Pelicula;
 import com.uca.cine.domain.Tipo;
 import com.uca.cine.domain.Tipof;
 import com.uca.cine.domain.Usuario;
@@ -228,7 +229,7 @@ public class adminController {
 	public ModelAndView saveH(@Valid @ModelAttribute Horariof horariof, BindingResult result,@RequestParam("cu") int cu,@RequestParam("usuarioC") String C) {
 		ModelAndView mav = new ModelAndView();
 		if(result.hasErrors()) {
-			mav.setViewName("/adminForms/crearTipof");
+			mav.setViewName("/adminForms/crearHorariof");
 			return mav;
 		}else {
 			if(horariof.getUsuariocreacion() == null || horariof.getUsuariocreacion() == "" ) {
@@ -262,6 +263,74 @@ public class adminController {
 		return mav;
 	}
 	
+	
+	@RequestMapping("/adminP")
+	public ModelAndView adminP(@RequestParam("cu") int cu) {
+		ModelAndView mav = new ModelAndView();
+		List<Pelicula> peliculas = peliculaservice.listar();
+		Usuario user = usuarioservice.obtenerUsuario(cu);
+		mav.addObject("peliculas",peliculas);
+		mav.addObject("usuario", user);
+		mav.setViewName("/adminForms/listaPelicula");
+		return mav;
+	}
+	@RequestMapping("/createP")
+	public ModelAndView createP(@RequestParam("cu") int ti) {
+		ModelAndView mav = new ModelAndView();
+		Pelicula pelicula = new Pelicula();
+		Usuario user = usuarioservice.obtenerUsuario(ti);
+		mav.addObject("pelicula",pelicula);
+		mav.addObject("usuario", user);
+		mav.setViewName("/adminForms/crearPelicula");
+		return mav;
+	}
+	@RequestMapping("/editP")
+	public ModelAndView editP(@RequestParam("cu") int ti,@RequestParam("c") int c) {
+		ModelAndView mav = new ModelAndView();
+		Pelicula pelicula = peliculaservice.obtenerUno(c);
+		Usuario user = usuarioservice.obtenerUsuario(ti);
+		mav.addObject("pelicula",pelicula);
+		mav.addObject("usuario", user);
+		mav.setViewName("/adminForms/crearPelicula");
+		return mav;
+	}
+	@RequestMapping("/saveP")
+	public ModelAndView saveP(@Valid @ModelAttribute Pelicula pelicula, BindingResult result,@RequestParam("cu") int cu,@RequestParam("usuarioC") String C) {
+		ModelAndView mav = new ModelAndView();
+		if(result.hasErrors()) {
+			mav.setViewName("/adminForms/crearPelicula");
+			return mav;
+		}else {
+			if(pelicula.getUsuariocreacion() == null || pelicula.getUsuariocreacion() == "" ) {
+				pelicula.setUsuariocreacion(C);
+				String dia, mes,annio;
+				Calendar c = Calendar.getInstance();
+				dia = Integer.toString(c.get(Calendar.DATE));
+				mes =Integer.toString(c.get(Calendar.MONTH)+1);
+				annio = Integer.toString(c.get(Calendar.YEAR));
+				String fecha = annio.concat("-"+mes+"-"+dia);
+				pelicula.setFechacreacion(fecha);
+			}else {
+				pelicula.setUsuariomodificacion(C);
+				String dia, mes,annio;
+				Calendar c = Calendar.getInstance();
+				dia = Integer.toString(c.get(Calendar.DATE));
+				mes =Integer.toString(c.get(Calendar.MONTH)+1);
+				annio = Integer.toString(c.get(Calendar.YEAR));
+				String fecha = annio.concat("-"+mes+"-"+dia);
+				pelicula.setFechamodificacion(fecha);
+			}
+			try {
+				peliculaservice.insertarActualizar(pelicula);
+			}catch(Exception e) {}
+		}
+		List<Pelicula> peliculas = peliculaservice.listar();
+		Usuario user = usuarioservice.obtenerUsuario(cu);
+		mav.addObject("peliculas",peliculas);
+		mav.addObject("usuario", user);
+		mav.setViewName("/adminForms/listaPelicula");
+		return mav;
+	}
 	
 	
 	

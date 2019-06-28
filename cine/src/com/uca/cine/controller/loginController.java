@@ -135,7 +135,7 @@ public class loginController {
 			HttpSession sesion = request.getSession();
 			if(results) {
 				sesion.setAttribute("usuario", usuario);
-				if(usuario.getTipo().equals("Cliente")) {
+				if(usuario.getTipo().getTipo().equals("Cliente")) {
 
 					mav.addObject("usuario",usuario);
 					mav.addObject("peliculas", peliculas);
