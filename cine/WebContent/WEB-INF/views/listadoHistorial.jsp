@@ -75,6 +75,12 @@
 									<label>Asientos: ${historial.reserva.nasientosreserva} </label><br> 
 									<label>Tipo de pelicula: ${historial.reserva.funcion.tipof.tipo} </label><br> 
 									<label>Saldo utilizado: ${historial.reserva.saldoutilizar} </label><br><br>
+									<c:set var = "nasientos" value = "${historial.reserva.nasientosreserva}"/>
+									<c:set var = "saldoU" value = "${historial.reserva.saldoutilizar}"/>
+									<c:set var = "tootal" value = "${nasientos*3}"/>
+									<c:set var = "gTotal" value = "${tootal-saldoU}"/>
+									<label>Gran Total: ${gTotal} </label><br><br>
+									
 									</div>
 									</div>
 								</div>
