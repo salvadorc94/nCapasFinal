@@ -66,7 +66,6 @@
 		
 		<label>Pais: </label>
 		<select id="pais" name="pais" onchange="myFunction();">
-			<option value="#">Seleccionar Pais</option>
 			<c:forEach items="${listaPais}" var="paises">
 				<option value="${paises.pkidpais}">${paises.pais}</option>
 			</c:forEach>

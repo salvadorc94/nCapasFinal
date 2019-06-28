@@ -50,8 +50,6 @@
 		<label>Seleccionar pelicula:</label>
 		<select id="pelis" name="pelis">
 			<c:forEach items="${pelis}" var="peliculas">
-			<c:set var ="estado" value="${peliculas.estado}"/>
-        		<c:if test = "${estado == true}">
 				<c:choose>
 					<c:when test="${funcion.pelicula.pkidpelicula == peliculas.pkidpelicula}">
 						<option value="${peliculas.pkidpelicula}" selected>${peliculas.nombre}</option>
@@ -60,15 +58,12 @@
 						<option value="${peliculas.pkidpelicula}">${peliculas.nombre}</option>
 					</c:otherwise>
 				</c:choose>
-				</c:if>
 			</c:forEach>
 		</select><br>
 		
 		<label>Seleccionar horario:</label>
 		<select id="horas" name="horas">
 			<c:forEach items="${horarios}" var="horarios">
-			<c:set var ="estado" value="${horarios.estado}"/>
-        		<c:if test = "${estado == true}">
 				<c:choose>
 					<c:when test="${funcion.horariof.pkidhorariof == horarios.pkidhorariof}">
 						<option value="${horarios.pkidhorariof}" selected>${horarios.horario}</option>
@@ -77,15 +72,12 @@
 						<option value="${horarios.pkidhorariof}">${horarios.horario}</option>
 					</c:otherwise>
 				</c:choose>
-				</c:if>
 			</c:forEach>
 		</select><br>
 		
 		<label>Seleccionar tipo:</label>
 		<select id="tipo" name="tipo">
 			<c:forEach items="${tipos}" var="tipos">
-			<c:set var ="estado" value="${tipos.estado}"/>
-        		<c:if test = "${estado == true}">
 				<c:choose>
 					<c:when test="${funcion.tipof.pkidtipof == tipos.pkidtipof}">
 						<option value="${tipos.pkidtipof}" selected>${tipos.tipo}</option>
@@ -94,7 +86,6 @@
 						<option value="${tipos.pkidtipof}">${tipos.tipo}</option>
 					</c:otherwise>
 				</c:choose>
-				</c:if>
 			</c:forEach>
 		</select><br>
 		

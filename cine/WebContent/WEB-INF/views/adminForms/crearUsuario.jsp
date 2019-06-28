@@ -37,7 +37,7 @@
 <div class="center">
 <h1>Crear Usuario</h1>
 
-<form:form  action="${pageContext.request.contextPath}/saveU" method="POST" modelAttribute="usuario">
+<form:form  action="${pageContext.request.contextPath}/saveU?cu=${cuser.pkidusuario}" method="POST" modelAttribute="usuario">
 		<form:input type="hidden" name="cod" path="pkidusuario"/>
 		
 		<label>Nombre: </label>
@@ -106,7 +106,7 @@
 		</select><br>
 		<c:set var = "depaU" value = "${usuario.departamento.pkiddepartamento}"/>
 		<select id="depa" name="depa">
-		<option value="0">Seleccionar Departamento</option>
+		<option value="1">Seleccionar Departamento</option>
 			<c:forEach items="${listaDepa}" var="depas">
 				<c:choose>
 					<c:when test="${depaU == depas.pkiddepartamento}">
@@ -120,7 +120,8 @@
 		</select><br>
 		<c:set var = "muniU" value = "${usuario.municipio.pkidmunicipio}"/>
 		<select id="muni" name="muni">
-		<option value="0">Seleccionar Municipio</option>
+		<option value="1">Seleccionar Municipio</option>
+		
 			<c:forEach items="${listaMuni}" var="munis">
 				<c:choose>
 					<c:when test="${muniU == munis.pkidmunicipio}">

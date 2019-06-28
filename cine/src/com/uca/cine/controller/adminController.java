@@ -63,9 +63,10 @@ public class adminController {
 	
 	
 	@RequestMapping("/crearU")
-	public ModelAndView crearU() {
+	public ModelAndView crearU(@RequestParam("cu") int cu) {
 		ModelAndView mav = new ModelAndView();
 		Usuario user = new Usuario();
+		Usuario cuser = usuarioservice.obtenerUsuario(cu);
 		List<Pais> paises = paisservice.listar();
 		List<Departamento> deptos = depaserv.listar();
 		List<Municipio> munis = muniserv.listar();
@@ -73,6 +74,7 @@ public class adminController {
 		mav.addObject("listaDepa",deptos);
 		mav.addObject("listaMuni",munis);
 		mav.addObject("usuario",user);
+		mav.addObject("cuser", cuser);
 		mav.setViewName("/adminForms/crearUsuario");
 		return mav;
 	}
@@ -82,6 +84,7 @@ public class adminController {
 	public ModelAndView editU(@RequestParam("cu") int cu) {
 		ModelAndView mav = new ModelAndView();
 		Usuario user = new Usuario();
+		Usuario cuser = usuarioservice.obtenerUsuario(cu);
 		try {
 			user = usuarioservice.obtenerUsuario(cu);
 		}catch(Exception e) {}
@@ -92,14 +95,16 @@ public class adminController {
 		mav.addObject("listaDepa",deptos);
 		mav.addObject("listaMuni",munis);
 		mav.addObject("usuario",user);
+		mav.addObject("cuser", cuser);
 		mav.setViewName("/adminForms/crearUsuario");
 		return mav;
 	}
 	
 	@RequestMapping("/saveU")
-	public ModelAndView guardar(@Valid @ModelAttribute Usuario user, BindingResult result,@RequestParam("pais") int pais,@RequestParam("depa") int depa,@RequestParam("muni") int muni,@RequestParam("tipo") String tipo) {
+	public ModelAndView guardar(@RequestParam("cu") int cu,@Valid @ModelAttribute Usuario user, BindingResult result,@RequestParam("pais") int pais,@RequestParam("depa") int depa,@RequestParam("muni") int muni,@RequestParam("tipo") String tipo) {
 		ModelAndView mav = new ModelAndView();
 		if(result.hasFieldErrors("nombre") || result.hasFieldErrors("apellido") || result.hasFieldErrors("fecha") || result.hasFieldErrors("direccion") || result.hasFieldErrors("nombreusuario") || result.hasFieldErrors("contraseniausuario")) {
+			mav.addObject("usuarioid", usuarioservice.obtenerUsuario(cu));
 			mav.setViewName("/adminForms/crearUsuario");
 			return mav;
 		}else {
@@ -119,7 +124,12 @@ public class adminController {
 				user.setTipo(tipoU);
 			}
 			usuarioservice.insertarActualizarUsuario(user);
+			
+			try {
+				users = usuarioservice.listar();
+			}catch(Exception e) {}
 			mav.addObject("usuario", users);
+			mav.addObject("usuarioid", usuarioservice.obtenerUsuario(cu));
 			mav.setViewName("adminModulo");
 		}
 		return mav;
