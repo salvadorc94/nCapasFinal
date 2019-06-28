@@ -30,7 +30,6 @@ public class Funcion {
 	@Column(name = "pkidfuncion")
 	private int pkidfuncion;
 	
-	@Min(1)
 	@Column(name = "asientos")
 	private int asientos;
 	
