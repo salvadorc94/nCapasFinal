@@ -32,12 +32,12 @@
 <title>Administrador</title>
 </head>
 <body>
-
+<img src="https://i.ibb.co/MM72F94/bannerH.png" alt="bannerT"" alt="banner" border="0" width=100% height=200>
+<MARQUEE SCROLLDELAY = 100 BGCOLOR="#84C0CD" BEHAVIOR=ALTERNATE>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</MARQUEE>
+<div style="background-image: url(https://i.ibb.co/FD777nK/fondo.png); height: 100%; width: 100%;">
+<br><br>
 <div class="card">
-<div class="center">
-
-
-<h1>Lista de Horario</h1>
+<div class="center"><br>
 <input type="button" class="btn btn-info" value="Crear Horario" onclick="location.href='${pageContext.request.contextPath}/createH?cu=${usuario.pkidusuario}'"/>
 <div class="btn-group">
 <input type="button" class="btn btn-primary" value="Catalogo usuario" onclick="location.href='${pageContext.request.contextPath}/adminU?cu=${usuario.pkidusuario}'"/>
@@ -46,7 +46,7 @@
 <input type="button" class="btn btn-info" value="Catalogo Pelicula" onclick="location.href='${pageContext.request.contextPath}/adminP?cu=${usuario.pkidusuario}'"/>
 <input type="button" class="btn btn-info" value="Catalogo Función" onclick="location.href='${pageContext.request.contextPath}/adminF?cu=${usuario.pkidusuario}'"/>
 <input type="button" class="btn btn-danger" value="Salir" onclick="location.href='${pageContext.request.contextPath}/Salir'"/>
-</div>
+</div><br><br>
 <div class="table-responsive center">          
   		<table class="table table-hover">
     		<thead>
@@ -77,6 +77,6 @@
     	</tbody>
   		</table>
   	</div>
-
+</div></div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
 </body>
 </html>
