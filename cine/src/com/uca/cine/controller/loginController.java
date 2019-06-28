@@ -62,13 +62,29 @@ public class loginController {
 			mav.addObject("usuario",user);
 			mav.setViewName("login");
 		}else {
-			List<Pelicula> peliculas = null;
-			try {
-				peliculas = peliculaservice.listar();
-			}catch (Exception e){}
-			mav.addObject("usuario",sesion.getAttribute("usuario"));
-			mav.addObject("peliculas", peliculas);
-			mav.setViewName("listadoPeli");
+			if(Integer.valueOf(sesion.getAttribute("usuario").toString()) == 2) {
+				List<Pelicula> peliculas = null;
+				try {
+					peliculas = peliculaservice.listar();
+				}catch (Exception e){}
+				mav.addObject("usuario",sesion.getAttribute("usuario"));
+				mav.addObject("peliculas", peliculas);
+				mav.setViewName("listadoPeli");
+			}else {
+				mav.addObject("usuarioid", usuarioservice.obtenerUsuario(Integer.valueOf(sesion.getAttribute("codUser").toString())));
+				mav.addObject("usuario",usuarioservice.listar());
+				mav.setViewName("adminModulo");
+			}
+			
+			/*
+			if(usuario.getTipo().getPkidtipo() == 2) {
+				mav.addObject("usuario",usuario);
+				mav.addObject("peliculas", peliculas);
+				mav.setViewName("listadoPeli");
+			}else {
+				mav.addObject("usuarioid", usuario);
+				mav.addObject("usuario",usuarioservice.listar());
+				mav.setViewName("adminModulo");}*/
 		}
 		
 		return mav;
@@ -141,9 +157,9 @@ public class loginController {
 			}
 			HttpSession sesion = request.getSession();
 			if(results) {
-				sesion.setAttribute("usuario", usuario);
-				if(usuario.getTipo().getTipo().equals("Cliente")) {
-
+				sesion.setAttribute("usuario", usuario.getTipo().getPkidtipo());
+				sesion.setAttribute("codUser", usuario.getPkidusuario());
+				if(usuario.getTipo().getPkidtipo() == 2) {
 					mav.addObject("usuario",usuario);
 					mav.addObject("peliculas", peliculas);
 					mav.setViewName("listadoPeli");
