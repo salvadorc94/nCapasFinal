@@ -32,10 +32,13 @@
 <title>Formulario de reservacion</title>
 </head>
 <body>
-
+<img src="https://i.ibb.co/gwVtTS3/bannerR.png" alt="bannerR" alt="banner" border="0" width=100% height=200>
+<MARQUEE SCROLLDELAY = 100 BGCOLOR="#84C0CD" BEHAVIOR=ALTERNATE>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</MARQUEE>
+<div style="background-image: url(https://i.ibb.co/FD777nK/fondo.png); height: 100%; width: 100%;">
+<br><br>
 <div class="card">
 <div class="center">
-<h1>Reserva</h1>
+<br>
 
 <form:form  action="${pageContext.request.contextPath}/reservaResumen?cp=${pelicula.pkidpelicula}&cu=${usuario.pkidusuario}&fu=${funcion.pkidfuncion}" method="POST" modelAttribute="reserva">
 		
@@ -44,7 +47,7 @@
 		<label>Horario elegido: ${funcion.horariof.horario} </label><br>
 		
 		
-		<label>Número de asientos: </label>
+		<label>Número de asientos: </label><br>
 		<form:input id="asientos" type="text"  path="nasientosreserva" onchange="verificarAsiento()"/><br>
 		<form:errors path="nasientosreserva" cssStyle="color: #ff0000;"/><br>
 		
@@ -58,11 +61,11 @@
 		<form:input value="0" id="saldo" type="number"  path="saldoutilizar"  style="display:none" onchange="verificarSaldo()"/><br>
 		<form:errors path="saldoutilizar" cssStyle="color: #ff0000;"/><br>
 				
-		<input type="submit" value="Reservar" class="btn btn-success"><br> 
+		<input type="submit" value="&nbsp &nbsp Reservar &nbsp &nbsp" class="btn btn-success"><br><br> 
 	</form:form>
 </div>
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
-
 <script>
 function myFunction() {
 	

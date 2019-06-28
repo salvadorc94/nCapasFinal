@@ -32,11 +32,13 @@
 <title>Formulario de reservacion</title>
 </head>
 <body>
-
+<img src="https://i.ibb.co/gwVtTS3/bannerR.png" alt="bannerR" alt="banner" border="0" width=100% height=200>
+<MARQUEE SCROLLDELAY = 100 BGCOLOR="#84C0CD" BEHAVIOR=ALTERNATE>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</MARQUEE>
+<div style="background-image: url(https://i.ibb.co/FD777nK/fondo.png); height: 100%; width: 100%;">
+<br><br>
 <div class="card">
 <div class="center">
-<h1>Reserva</h1>
-
+<br>
 <form  action="${pageContext.request.contextPath}/guardarReserva?cu=${usuario.pkidusuario}&fu=${funcion.pkidfuncion}" method="POST">
 		
 		<label>Nombre pelicula: ${pelicula.nombre}</label><br>
@@ -46,10 +48,10 @@
 		<label>Saldo a utilizar: ${reserva.saldoutilizar} </label><br> <input type="hidden" name="saldoU" id="saldoU" value="${reserva.saldoutilizar}"/>
 		<label>Saldo remanente: ${reserva.saldorestante}</label><br> <input type="hidden" name="saldoR" id="saldoR" value="${reserva.saldorestante}"/>
 		<label>Gran total: ${granTotal}</label><br>
-		<input type="submit" value="Finalizar transacción" class="btn btn-success"><br> 
+		<br><input type="submit" value="&nbsp &nbsp Finalizar transacción &nbsp &nbsp" class="btn btn-success"><br><br> 
 	</form>
 </div>
 </div>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
 </body>
 </html>
