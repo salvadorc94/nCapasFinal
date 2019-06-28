@@ -68,11 +68,19 @@
 		<form:input type="number"  path="saldo"/><br>
 		<form:errors path="saldo" cssStyle="color: #ff0000;"/><br>
 		
-		
-		<label>Rango: </label>
-		<input type="radio" name="tipo" value="Admin"> Administrador<br>
-  		<input type="radio" name="tipo" value="Cliente">Cliente<br><br>
-		
+		<c:set var = "id" value = "${usuario.tipo.pkidtipo}"/>
+		<c:choose>
+		<c:when test="${id==1}">
+			<label>Rango: </label>
+			<input type="radio" name="tipo" value="Admin" checked> Administrador<br>
+  			<input type="radio" name="tipo" value="Cliente">Cliente<br><br>
+		</c:when>
+		<c:otherwise>
+			<label>Rango: </label>
+			<input type="radio" name="tipo" value="Admin" > Administrador<br>
+  			<input type="radio" name="tipo" value="Cliente" checked>Cliente<br><br>
+		</c:otherwise>
+		</c:choose>
 		<label>Estado: </label>
 		<form:radiobutton name="estado" value="true" path="estado"/> Activo<br>
   		<form:radiobutton name="estado" value="false" path="estado"/>Inactivo<br>
@@ -81,20 +89,48 @@
 		<form:input type="text" name="motivo" path="descripcion"/><br>
 		
 		<label>Pais: </label>
+		<c:set var = "paisU" value = "${usuario.pais.pkidpais}"/>
 		<select id="pais" name="pais" onchange="myFunction();">
 			<option value="#">Seleccionar Pais</option>
 			<c:forEach items="${listaPais}" var="paises">
-				<option value="${paises.pkidpais}">${paises.pais}</option>
+				<c:choose>
+					<c:when test="${paisU == paises.pkidpais}">
+						<option value="${paises.pkidpais}" selected>${paises.pais}</option>
+					</c:when>
+					<c:otherwise>
+						<option value="${paises.pkidpais}">${paises.pais}</option>
+					</c:otherwise>
+				</c:choose>
+				
 			</c:forEach>
 		</select><br>
-		<select id="depa" name="depa" style="display:none">
+		<c:set var = "depaU" value = "${usuario.departamento.pkiddepartamento}"/>
+		<select id="depa" name="depa">
+		<option value="0">Seleccionar Departamento</option>
 			<c:forEach items="${listaDepa}" var="depas">
-				<option value="${depas.pkiddepartamento}">${depas.departamento}</option>
+				<c:choose>
+					<c:when test="${depaU == depas.pkiddepartamento}">
+						<option value="${depas.pkiddepartamento}" selected>${depas.departamento}</option>
+					</c:when>
+					<c:otherwise>
+						<option value="${depas.pkiddepartamento}">${depas.departamento}</option>
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
 		</select><br>
-		<select id="muni" name="muni" style="display:none">
+		<c:set var = "muniU" value = "${usuario.municipio.pkidmunicipio}"/>
+		<select id="muni" name="muni">
+		<option value="0">Seleccionar Municipio</option>
 			<c:forEach items="${listaMuni}" var="munis">
-				<option value="${munis.pkidmunicipio}">${munis.municipio}</option>
+				<c:choose>
+					<c:when test="${muniU == munis.pkidmunicipio}">
+						<option value="${munis.pkidmunicipio}" selected>${munis.municipio}</option>
+					</c:when>
+					<c:otherwise>
+						<option value="${munis.pkidmunicipio}">${munis.municipio}</option>
+					</c:otherwise>
+				</c:choose>
+				
 			</c:forEach>
 		</select><br>
 		
@@ -111,6 +147,7 @@ function myFunction() {
 	  document.getElementById("depa").style.display = 'none';
 	  document.getElementById("muni").style.display = 'none';
   }else{
+	  <c:set var = "id" value = "${usuario.tipo.pkidtipo}"/>
 	  document.getElementById("depa").style.display = 'inline';
 	  document.getElementById("muni").style.display = 'inline';
   }

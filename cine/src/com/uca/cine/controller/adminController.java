@@ -80,6 +80,10 @@ public class adminController {
 			mav.setViewName("/adminForms/crearUsuario");
 			return mav;
 		}else {
+			List<Usuario> users = null;
+			try {
+				users = usuarioservice.listar();
+			}catch(Exception e) {}
 			user.setPais(paisservice.getOne(pais));
 			user.setMunicipio(muniserv.getOne(muni));
 			user.setDepartamento(depaserv.getOne(depa));
@@ -92,7 +96,8 @@ public class adminController {
 				user.setTipo(tipoU);
 			}
 			usuarioservice.insertarActualizarUsuario(user);
-			mav.setViewName("login");
+			mav.addObject("usuario", users);
+			mav.setViewName("adminModulo");
 		}
 		
 		
@@ -101,5 +106,6 @@ public class adminController {
 		mav.setViewName("login");
 		return mav;
 	}
-
+	
+	//crearH crearP crearF
 }

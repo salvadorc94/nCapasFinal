@@ -38,8 +38,13 @@
 
 
 <h1>Lista de Usuarios</h1>
+<div class="btn-group">
 <input type="button" class="btn btn-primary" value="Crear Nuevo Usuario" onclick="location.href='${pageContext.request.contextPath}/crearU'"/>
-
+<input type="button" class="btn btn-info" value="Catalogo Tipo" onclick="location.href='${pageContext.request.contextPath}/crearT'"/>
+<input type="button" class="btn btn-info" value="Catalogo Horario" onclick="location.href='${pageContext.request.contextPath}/crearH'"/>
+<input type="button" class="btn btn-info" value="Catalogo Pelicula" onclick="location.href='${pageContext.request.contextPath}/crearP'"/>
+<input type="button" class="btn btn-info" value="Catalogo Función" onclick="location.href='${pageContext.request.contextPath}/crearF'"/>
+</div>
 <div class="table-responsive center">          
   		<table class="table table-hover">
     		<thead>
