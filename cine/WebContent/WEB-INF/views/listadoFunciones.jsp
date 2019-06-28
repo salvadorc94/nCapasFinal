@@ -35,7 +35,9 @@
     	<tbody>
         		<c:forEach items="${funciones}" var="funciones">
         		<c:set var ="estado" value="${funciones.estado}"/>
+        		<c:set var ="estado2" value="${funciones.tipof.estado}"/>
         		<c:if test = "${estado == true}">
+        			<c:if test="${estado2 == true}">
         			<tr>
         			<td>
   						<input type="button" class="btn btn-primary" value="Reservar" onclick="location.href='${pageContext.request.contextPath}/reservar?cp=${pelicula.pkidpelicula}&cu=${usuario.pkidusuario}&fu=${funciones.pkidfuncion}'"/>
@@ -51,6 +53,7 @@
         				
         			
         			</tr>
+        			</c:if>
         			</c:if>
         		</c:forEach>
     	</tbody>

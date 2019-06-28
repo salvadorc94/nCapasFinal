@@ -37,13 +37,14 @@
 <div class="center">
 
 
-<h1>Lista de Usuarios</h1>
+<h1>Lista de Horario</h1>
+<input type="button" class="btn btn-info" value="Crear Horario" onclick="location.href='${pageContext.request.contextPath}/createH?cu=${usuario.pkidusuario}'"/>
 <div class="btn-group">
-<input type="button" class="btn btn-primary" value="Crear Nuevo Usuario" onclick="location.href='${pageContext.request.contextPath}/crearU'"/>
-<input type="button" class="btn btn-info" value="Catalogo Tipo" onclick="location.href='${pageContext.request.contextPath}/adminT?cu=${usuarioid.pkidusuario}'"/>
-<input type="button" class="btn btn-info" value="Catalogo Horario" onclick="location.href='${pageContext.request.contextPath}/adminH?cu=${usuarioid.pkidusuario}'"/>
-<input type="button" class="btn btn-info" value="Catalogo Pelicula" onclick="location.href='${pageContext.request.contextPath}/adminP?cu=${usuarioid.pkidusuario}'"/>
-<input type="button" class="btn btn-info" value="Catalogo Función" onclick="location.href='${pageContext.request.contextPath}/adminF?cu=${usuarioid.pkidusuario}'"/>
+<input type="button" class="btn btn-primary" value="Catalogo usuario" onclick="location.href='${pageContext.request.contextPath}/adminU?cu=${usuario.pkidusuario}'"/>
+<input type="button" class="btn btn-info" value="Catalogo Tipo" onclick="location.href='${pageContext.request.contextPath}/adminT?cu=${usuario.pkidusuario}'"/>
+<input type="button" class="btn btn-info" value="Catalogo Horario" onclick="location.href='${pageContext.request.contextPath}/adminH?cu=${usuario.pkidusuario}'"/>
+<input type="button" class="btn btn-info" value="Catalogo Pelicula" onclick="location.href='${pageContext.request.contextPath}/adminP?cu=${usuario.pkidusuario}'"/>
+<input type="button" class="btn btn-info" value="Catalogo Función" onclick="location.href='${pageContext.request.contextPath}/adminF?cu=${usuario.pkidusuario}'"/>
 <input type="button" class="btn btn-danger" value="Salir" onclick="location.href='${pageContext.request.contextPath}/Salir'"/>
 </div>
 <div class="table-responsive center">          
@@ -51,28 +52,26 @@
     		<thead>
       			<tr>
       				<th>Acción</th>
-        			<th>Nombre</th>
-        			<th>Apellido</th>
-        			<th>Fecha</th>
-        			<th>Direccion</th>
+        			<th>Tipo</th>
         			<th>Estado</th>
-        			<th>Nombre Usuario</th>
-        			<th>Saldo</th>
+        			<th>Fecha Creación</th>
+        			<th>Usuario Creación</th>
+        			<th>Fecha Modificación</th>
+        			<th>Usuario Modificación</th>
       			</tr>
     		</thead>
     	<tbody>
-        		<c:forEach items="${usuario}" var="usuario">
+        		<c:forEach items="${horario}" var="horario">
         			<tr>
         			<td>
-  						<input type="button" class="btn btn-primary" value="Editar" onclick="location.href='${pageContext.request.contextPath}/editU?cu=${usuario.pkidusuario}'"/>
+  						<input type="button" class="btn btn-primary" value="Editar" onclick="location.href='${pageContext.request.contextPath}/editH?c=${horario.pkidhorariof}&cu=${usuario.pkidusuario}'"/>
         			</td>	
-        			<td>${usuario.nombre}</td>
-        			<td>${usuario.apellido}</td>
-        			<td>${usuario.fecha}</td>
-        			<td>${usuario.direccion}</td>
-        			<td>${usuario.estadoDelegate}</td>
-        			<td>${usuario.nombreusuario}</td>
-        			<td>${usuario.saldo}</td>
+        			<td>${horario.horario}</td>
+        			<td>${horario.estadoDelegate}</td>
+        			<td>${horario.fechacreacion}</td>
+        			<td>${horario.usuariocreacion}</td>
+        			<td>${horario.fechamodificacion}</td>
+        			<td>${horario.usuariomodificacion}</td>
         			</tr>
         		</c:forEach>
     	</tbody>

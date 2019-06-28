@@ -29,23 +29,23 @@
 }
 </style>
 
-<title>Crear Tipo</title>
+<title>Crear Horario</title>
 </head>
 <body>
 
 <div class="card">
 <div class="center">
-<h1>Crear Tipo</h1>
+<h1>Crear Horario</h1>
 
-<form:form  action="${pageContext.request.contextPath}/saveT?cu=${usuario.pkidusuario}" method="POST" modelAttribute="tipof">
-		<form:input type="hidden" name="cod" path="pkidtipof"/>
+<form:form  action="${pageContext.request.contextPath}/saveH?cu=${usuario.pkidusuario}" method="POST" modelAttribute="horariof">
+		<form:input type="hidden" name="cod" path="pkidhorariof"/>
 		<form:input type="hidden"  path="usuariocreacion"/>
 		<form:input type="hidden"  path="usuariomodificacion"/>
 		<form:input type="hidden" path="fechacreacion"/>
 		<input type="hidden" name="usuarioC" value="${usuario.nombreusuario}"/>
-		<label>Añadir nuevo tipo: </label>
-		<form:input type="text"  path="tipo"/><br>
-		<form:errors path="tipo" cssStyle="color: #ff0000;"/><br>
+		<label>Añadir nuevo horario: </label>
+		<form:input type="text"  path="horario"/><br>
+		<form:errors path="horario" cssStyle="color: #ff0000;"/><br>
 		
 		<label>Estado: </label>
 		<form:radiobutton name="estado" value="true" path="estado"/> Activo<br>

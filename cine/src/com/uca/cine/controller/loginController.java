@@ -141,6 +141,7 @@ public class loginController {
 					mav.addObject("peliculas", peliculas);
 					mav.setViewName("listadoPeli");
 				}else {
+					mav.addObject("usuarioid", usuario);
 					mav.addObject("usuario",usuarioservice.listar());
 					mav.setViewName("adminModulo");
 				}
