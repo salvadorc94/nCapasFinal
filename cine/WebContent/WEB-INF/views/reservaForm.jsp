@@ -80,14 +80,18 @@ function myFunction() {
 	function verificarAsiento(){
 		var x = document.getElementById("asientos").value;
 		var y = ${funcion.asientos};
-		
-		if(x>y){
-			alert("No hay suficientes asientos");
-			document.getElementById("asientos").value = "";
+		if(x>0){
+			if(x>y){
+				alert("No hay suficientes asientos");
+				document.getElementById("asientos").value = "";
+			}else{
+				var t = x*3;
+				document.getElementById("total").innerHTML = t;
+			}	
 		}else{
-			var t = x*3;
-			document.getElementById("total").innerHTML = t;
+			alert("Debe escoger por lo menos un asiento");
 		}
+		
 		
 	}
 	

@@ -30,6 +30,18 @@ public class Historial {
 	public int getPkidhistorial() {
 		return pkidhistorial;
 	}
+	
+	public String getDelegateid() {
+		int aux = 0;
+		aux = String.valueOf(pkidhistorial).length();
+		StringBuilder idtexto = new StringBuilder();
+		for(int i=aux;i<8;i++) {
+			idtexto.append("0");
+		}
+		idtexto.append(String.valueOf(pkidhistorial));
+		
+		return idtexto.toString();
+	}
 
 	public void setPkidhistorial(int pkidhistorial) {
 		this.pkidhistorial = pkidhistorial;

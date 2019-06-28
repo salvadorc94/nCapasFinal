@@ -50,7 +50,7 @@
         			<td>
   						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#${historial.pkidhistorial}">Ver Detalle</button>
         				</td>	
-        				<td>0000000${historial.pkidhistorial}</td>
+        				<td>${historial.delegateid}</td>
         				<td>${historial.reserva.fechareserva}</td>
         			</tr>
         			
