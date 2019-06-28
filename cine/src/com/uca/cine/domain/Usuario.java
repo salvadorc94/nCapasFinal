@@ -64,7 +64,10 @@ public class Usuario {
 	
 	@Column(name = "saldo")
 	private int saldo;
-
+	
+	@Column(name= "descripcion")
+	private String descripcion;
+	
 	//FK_PAIS
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fkidpais")
@@ -97,6 +100,13 @@ public class Usuario {
 	}
 	public String getEstadoDelegate() {
 		return estado == true ? "Activo":"Inactivo";
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	public int getPkidusuario() {
 		return pkidusuario;

@@ -29,9 +29,6 @@ public class Tipo {
 	@Column(name = "tipo")
 	private String tipo;
 	
-	@NotNull
-	@Column(name = "descripcion")
-	private String descripcion;
 	
 	@OneToMany(mappedBy = "tipo", fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Usuario> usuarios;
@@ -52,13 +49,6 @@ public class Tipo {
 		this.tipo = tipo;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
 
 	public List<Usuario> getUsuarios() {
 		return usuarios;

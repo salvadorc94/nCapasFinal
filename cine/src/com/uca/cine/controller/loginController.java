@@ -20,6 +20,7 @@ import com.uca.cine.domain.Departamento;
 import com.uca.cine.domain.Municipio;
 import com.uca.cine.domain.Pais;
 import com.uca.cine.domain.Pelicula;
+import com.uca.cine.domain.Tipo;
 import com.uca.cine.services.DepartamentoService;
 import com.uca.cine.services.MunicipioService;
 import com.uca.cine.services.PaisService;
@@ -92,6 +93,13 @@ public class loginController {
 	public ModelAndView guardar(@Valid @ModelAttribute Usuario user, BindingResult result,@RequestParam("pais") int pais,@RequestParam("depa") int depa,@RequestParam("muni") int muni) {
 		ModelAndView mav = new ModelAndView();
 		if(result.hasFieldErrors("nombre") || result.hasFieldErrors("apellido") || result.hasFieldErrors("fecha") || result.hasFieldErrors("direccion") || result.hasFieldErrors("nombreusuario") || result.hasFieldErrors("contraseniausuario")) {
+			List<Pais> paises = paisservice.listar();
+			List<Departamento> deptos = depaserv.listar();
+			List<Municipio> munis = muniserv.listar();
+			mav.addObject("usuario", user);
+			mav.addObject("listaPais",paises);
+			mav.addObject("listaDepa", deptos);
+			mav.addObject("listaMuni", munis);
 			mav.setViewName("createU");
 			return mav;
 		}else {
@@ -101,6 +109,9 @@ public class loginController {
 			user.setMunicipio(muniserv.getOne(muni));
 			user.setDepartamento(depaserv.getOne(depa));
 			user.setFecha(user.getFecha());
+			Tipo tipo = new Tipo();
+			tipo.setPkidtipo(2);
+			user.setTipo(tipo);
 			usuarioservice.insertarActualizarUsuario(user);
 		}
 		
@@ -131,9 +142,16 @@ public class loginController {
 			HttpSession sesion = request.getSession();
 			if(results) {
 				sesion.setAttribute("usuario", usuario);
-				mav.addObject("usuario",usuario);
-				mav.addObject("peliculas", peliculas);
-				mav.setViewName("listadoPeli");
+				if(usuario.getTipo().getTipo().equals("Cliente")) {
+
+					mav.addObject("usuario",usuario);
+					mav.addObject("peliculas", peliculas);
+					mav.setViewName("listadoPeli");
+				}else {
+					mav.addObject("usuarioid", usuario);
+					mav.addObject("usuario",usuarioservice.listar());
+					mav.setViewName("adminModulo");
+				}
 			}else {
 				if(usuario != null) {
 					//MOSTRAR MOTIVO DE INACTIVACIÓN

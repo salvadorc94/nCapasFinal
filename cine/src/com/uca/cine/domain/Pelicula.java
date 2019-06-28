@@ -40,7 +40,7 @@ public class Pelicula {
 	
 	@NotNull
 	@Column(name = "fechacreacion")
-	private Date fechacreacion;
+	private String fechacreacion;
 	
 	@NotNull
 	@Column(name = "usuariocreacion")
@@ -48,7 +48,7 @@ public class Pelicula {
 	
 	@NotNull
 	@Column(name = "fechamodificacion")
-	private Date fechamodificacion;
+	private String fechamodificacion;
 	
 	@NotNull
 	@Column(name = "usuariomodificacion")
@@ -103,13 +103,6 @@ public class Pelicula {
 		this.img = img;
 	}
 
-	public Date getFechacreacion() {
-		return fechacreacion;
-	}
-
-	public void setFechacreacion(Date fechacreacion) {
-		this.fechacreacion = fechacreacion;
-	}
 
 	public String getUsuariocreacion() {
 		return usuariocreacion;
@@ -119,11 +112,20 @@ public class Pelicula {
 		this.usuariocreacion = usuariocreacion;
 	}
 
-	public Date getFechamodificacion() {
+
+	public String getFechacreacion() {
+		return fechacreacion;
+	}
+
+	public void setFechacreacion(String fechacreacion) {
+		this.fechacreacion = fechacreacion;
+	}
+
+	public String getFechamodificacion() {
 		return fechamodificacion;
 	}
 
-	public void setFechamodificacion(Date fechamodificacion) {
+	public void setFechamodificacion(String fechamodificacion) {
 		this.fechamodificacion = fechamodificacion;
 	}
 

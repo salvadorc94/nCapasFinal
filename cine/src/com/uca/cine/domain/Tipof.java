@@ -35,7 +35,7 @@ public class Tipof {
 	
 	@NotNull
 	@Column(name = "fechacreacion")
-	private Date fechacreacion;
+	private String fechacreacion;
 	
 	@NotNull
 	@Column(name = "usuariocreacion")
@@ -43,7 +43,7 @@ public class Tipof {
 	
 	@NotNull
 	@Column(name = "fechamodificacion")
-	private Date fechamodificacion;
+	private String fechamodificacion;
 	
 	@NotNull
 	@Column(name = "usuariomodificacion")
@@ -80,12 +80,22 @@ public class Tipof {
 		this.estado = estado;
 	}
 
-	public Date getFechacreacion() {
+	
+
+	public String getFechacreacion() {
 		return fechacreacion;
 	}
 
-	public void setFechacreacion(Date fechacreacion) {
+	public void setFechacreacion(String fechacreacion) {
 		this.fechacreacion = fechacreacion;
+	}
+
+	public String getFechamodificacion() {
+		return fechamodificacion;
+	}
+
+	public void setFechamodificacion(String fechamodificacion) {
+		this.fechamodificacion = fechamodificacion;
 	}
 
 	public String getUsuariocreacion() {
@@ -96,13 +106,6 @@ public class Tipof {
 		this.usuariocreacion = usuariocreacion;
 	}
 
-	public Date getFechamodificacion() {
-		return fechamodificacion;
-	}
-
-	public void setFechamodificacion(Date fechamodificacion) {
-		this.fechamodificacion = fechamodificacion;
-	}
 
 	public String getUsuariomodificacion() {
 		return usuariomodificacion;
