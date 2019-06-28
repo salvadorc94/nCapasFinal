@@ -45,9 +45,9 @@ package com.uca.cine.configuration;
  public DataSource dataSource(){
  DriverManagerDataSource dataSource = new DriverManagerDataSource();
  dataSource.setDriverClassName("org.postgresql.Driver");
- dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/proyectoNCapas");
+ dataSource.setUrl("jdbc:postgresql://127.0.0.1:5432/proyectoNCapasDos");
  dataSource.setUsername("postgres");
- dataSource.setPassword("root");
+ dataSource.setPassword("A0E71931");
  return dataSource;
  }
 

@@ -32,10 +32,13 @@
 <title>Crear Horario</title>
 </head>
 <body>
-
+<img src="https://i.ibb.co/MM72F94/bannerH.png" alt="bannerT"" alt="banner" border="0" width=100% height=200>
+<MARQUEE SCROLLDELAY = 100 BGCOLOR="#84C0CD" BEHAVIOR=ALTERNATE>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</MARQUEE>
+<div style="background-image: url(https://i.ibb.co/FD777nK/fondo.png); height: 100%; width: 100%;">
+<br><br>
 <div class="card">
-<div class="center">
-<h1>Crear Horario</h1>
+<div class="center"><br>
+<h1>Crear Horario</h1><br>
 
 <form:form  action="${pageContext.request.contextPath}/saveH?cu=${usuario.pkidusuario}" method="POST" modelAttribute="horariof">
 		<form:input type="hidden" name="cod" path="pkidhorariof"/>
@@ -43,19 +46,20 @@
 		<form:input type="hidden"  path="usuariomodificacion"/>
 		<form:input type="hidden" path="fechacreacion"/>
 		<input type="hidden" name="usuarioC" value="${usuario.nombreusuario}"/>
-		<label>Añadir nuevo horario: </label>
+		<label>Añadir nuevo horario: &nbsp &nbsp</label>
 		<form:input type="text"  path="horario"/><br>
 		<form:errors path="horario" cssStyle="color: #ff0000;"/><br>
 		
-		<label>Estado: </label>
+		<label>Estado: &nbsp &nbsp</label>
 		<form:radiobutton name="estado" value="true" path="estado"/> Activo<br>
+  		&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
   		<form:radiobutton name="estado" value="false" path="estado"/>Inactivo<br>
-	
-		<input type="submit" value="Save" class="btn btn-success"><br> 
+		<br>	
+		<input type="submit" value="&nbsp &nbsp Save &nbsp &nbsp" class="btn btn-success"><br> <br>
 	</form:form>
 </div>
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
-
 
 </body>
 </html>

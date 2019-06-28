@@ -29,43 +29,47 @@
 }
 </style>
 
-<title>Create Employee</title>
+<title>Crear Usuario</title>
 </head>
-<body>
 
+<body>
+<img src="https://i.ibb.co/G2ZCTTL/bannerU.png" alt="banner" border="0" width=100% height=200>
+<MARQUEE SCROLLDELAY = 100 BGCOLOR="#84C0CD" BEHAVIOR=ALTERNATE>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</MARQUEE>
+<div style="background-image: url(https://i.ibb.co/FD777nK/fondo.png); height: 100%; width: 100%;">
+<br><br>
 <div class="card">
-<div class="center">
-<h1>Crear Usuario</h1>
+<div class="center"><br>
+<h1>Crear Usuario</h1><br>
 
 <form:form  action="${pageContext.request.contextPath}/save" method="POST" modelAttribute="usuario">
 		
-		<label>Nombre: </label>
+		<label>Nombre: &nbsp &nbsp &nbsp &nbsp &nbsp</label>
 		<form:input type="text"  path="nombre"/><br>
 		<form:errors path="nombre" cssStyle="color: #ff0000;"/><br>
 		
-		<label>Apellido:  </label>
+		<label>Apellido: &nbsp &nbsp &nbsp &nbsp &nbsp</label>
 		<form:input type="text" path="apellido"/><br>
 		<form:errors path="apellido" cssStyle="color: #ff0000;"/><br>
 		
-		<label>Fecha:  </label>
+		<label>Fecha: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</label>
 		<form:input type="date"  path="fecha"/><br>
 		<form:errors path="fecha" cssStyle="color: #ff0000;"/><br>
 		
-		
-		<label>Direccion: </label>
+		<label>Direccion: &nbsp &nbsp &nbsp</label>
 		<form:input type="text"  path="direccion"/><br>
 		<form:errors path="direccion" cssStyle="color: #ff0000;"/><br>
 		
-		<label>Nombre de Usuario: </label>
+		<label>Apodo: &nbsp &nbsp &nbsp &nbsp &nbsp</label>
 		<form:input type="text"  path="nombreusuario"/><br>
 		<form:errors path="nombreusuario" cssStyle="color: #ff0000;"/><br>
 		
-		<label>Contrasenia: </label>
+		<label>Clave: &nbsp &nbsp &nbsp &nbsp &nbsp</label>
 		<form:input type="password"  path="contraseniausuario"/><br>
 		<form:errors path="contraseniausuario" cssStyle="color: #ff0000;"/><br>
 		
 		<label>Pais: </label>
 		<select id="pais" name="pais" onchange="myFunction();">
+			<option value="#">Seleccionar Pais</option>
 			<c:forEach items="${listaPais}" var="paises">
 				<option value="${paises.pkidpais}">${paises.pais}</option>
 			</c:forEach>
@@ -74,18 +78,19 @@
 			<c:forEach items="${listaDepa}" var="depas">
 				<option value="${depas.pkiddepartamento}">${depas.departamento}</option>
 			</c:forEach>
-		</select><br>
+		</select><br><br>
 		<select id="muni" name="muni" style="display:none">
 			<c:forEach items="${listaMuni}" var="munis">
 				<option value="${munis.pkidmunicipio}">${munis.municipio}</option>
 			</c:forEach>
 		</select><br>
-		
-		<input type="submit" value="Save" class="btn btn-success"><br> 
+		<br>
+		<input type="submit" value="&nbsp &nbsp Save &nbsp &nbsp" class="btn btn-success"><br> 
+	<br>
 	</form:form>
 </div>
+</div><br><br><br><br><br><br><br><br><br>
 </div>
-
 <script>
 function myFunction() {
   var x = document.getElementById("pais").value;

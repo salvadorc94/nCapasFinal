@@ -32,24 +32,73 @@
 <title>Bienvenido</title>
 </head>
 <body>
+<img src="https://i.ibb.co/VCmYCVj/banner.png" alt="banner" border="0" width=100% height=200>
+<MARQUEE SCROLLDELAY = 100 BGCOLOR="#84C0CD" BEHAVIOR=ALTERNATE>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</MARQUEE>
+<div style="background-image: url(https://i.ibb.co/FD777nK/fondo.png); height: 100%; width: 100%;">
+<br><br>
 <div class="card">
-<div class="center">
-<h1>Ingresa tus credenciales</h1>
+<div class="center"><br>
 
+<FONT FACE="Impact" size="7">
+
+INGRESA TUS CREDENCIALES
+
+</FONT>
+<br><br>
+<MARQUEE SCROLLDELAY = 100 BGCOLOR="#84C0CD" BEHAVIOR=ALTERNATE>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</MARQUEE><br>
+<br><br>
 <form:form  action="${pageContext.request.contextPath}/login" method="POST" modelAttribute="usuario">
-		<label>Ingresa tu usuario: </label>
+		<FONT size="4">
+		<label>Ingresa tu usuario: &nbsp &nbsp &nbsp &nbsp &nbsp</label>
 		<form:input type="text" path="nombreusuario"/><br>
+		</FONT>
 		<form:errors path="nombreusuario" cssStyle="color: #ff0000;"/><br>
-		
-		<label>Ingresa tu contrase&ntildea: </label>
+		<FONT size="4">
+		<label>Ingresa tu contrase&ntildea: &nbsp &nbsp</label>
 		<form:input type="password" path="contraseniausuario"/><br>
+		</FONT>
 		<form:errors path="contraseniausuario" cssStyle="color: #ff0000;"/><br>
-		
-		<input type="submit" value="Entrar">
-		<input type="button" value="Crear Usuario" onclick="location.href='${pageContext.request.contextPath}/edit'"><br>
+		<br><br>
+		<input type="submit" value="&nbsp &nbsp &nbsp Entrar &nbsp &nbsp &nbsp  " class="btn btn-primary"> &nbsp &nbsp &nbsp &nbsp
+		<input type="button" class="btn btn-info" value="Crear Usuario" onclick="location.href='${pageContext.request.contextPath}/edit'"><br>
 		<label><p>${mal}</p></label>
 	</form:form>
 </div>
+</div>
+<br><br><br>
+<MARQUEE height=175 SCROLLDELAY = 100 BGCOLOR="000000">
+<img src="https://i.ibb.co/VW855Nj/PROXI.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/GWKWH0y/P1.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/VW855Nj/PROXI.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/3cjrMsp/P3.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/VW855Nj/PROXI.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/Qr5h9HY/P2.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/VW855Nj/PROXI.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/gMfVXCN/P4.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/VW855Nj/PROXI.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/FYBhxjd/P5.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/VW855Nj/PROXI.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/GWKWH0y/P1.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/VW855Nj/PROXI.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/3cjrMsp/P3.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/VW855Nj/PROXI.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/Qr5h9HY/P2.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/VW855Nj/PROXI.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/gMfVXCN/P4.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/VW855Nj/PROXI.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/FYBhxjd/P5.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/VW855Nj/PROXI.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/GWKWH0y/P1.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/VW855Nj/PROXI.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/3cjrMsp/P3.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/VW855Nj/PROXI.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/Qr5h9HY/P2.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/VW855Nj/PROXI.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/gMfVXCN/P4.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/VW855Nj/PROXI.png" alt="banner" border="0" height=175>
+<img src="https://i.ibb.co/FYBhxjd/P5.png" alt="banner" border="0" height=175>
+</MARQUEE>
+<br><br><br><br><br>
 </div>
 </body>
 </html>

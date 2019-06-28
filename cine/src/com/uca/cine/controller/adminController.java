@@ -54,8 +54,9 @@ public class adminController {
 	private FuncionService funcionservice;
 	
 	@RequestMapping("/adminU")
-	public ModelAndView adminU() {
+	public ModelAndView adminU(@RequestParam("cu") int cu) {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("usuarioid", usuarioservice.obtenerUsuario(cu));
 		mav.addObject("usuario",usuarioservice.listar());
 		mav.setViewName("adminModulo");
 		return mav;

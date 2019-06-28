@@ -20,16 +20,22 @@
 <title>Horarios</title>
 </head>
 <body>
-	<h2>Horarios para ${pelicula.nombre}</h2>
+<img src="https://i.ibb.co/MM72F94/bannerH.png" alt="banner" border="0" width=100% height=200>
+<MARQUEE SCROLLDELAY = 100 BGCOLOR="#84C0CD" BEHAVIOR=ALTERNATE>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</MARQUEE>
+<div style="background-image: url(https://i.ibb.co/FD777nK/fondo.png); height: 100%; width: 100%;">
+<br><br>
+	<h2>
+	&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+	<font color="#84C0CD" size="6">Horarios para ${pelicula.nombre}</font></h2>
 	<br>
 	<div class="table-responsive center">          
   		<table class="table table-hover">
     		<thead>
       			<tr>
-        			<th>Action</th>
-        			<th>Numero de asientos</th>
-        			<th>Tipo de asiento</th>
-        			<th>Horario</th>
+        			<th><font color="#84C0CD" size="5"><b>Action</b></font></th>
+        			<th><font color="#84C0CD" size="5"><b>Numero de asientos</b></font></th>
+        			<th><font color="#84C0CD" size="5"><b>Tipo de asiento</b></font></th>
+        			<th><font color="#84C0CD" size="5"><b>Horario</b></font></th>
       			</tr>
     		</thead>
     	<tbody>
@@ -42,12 +48,12 @@
         			<td>
   						<input type="button" class="btn btn-primary" value="Reservar" onclick="location.href='${pageContext.request.contextPath}/reservar?cp=${pelicula.pkidpelicula}&cu=${usuario.pkidusuario}&fu=${funciones.pkidfuncion}'"/>
         				</td>	
-        				<td>${funciones.asientos}</td>
+        				<td><font color="#84C0CD" size="5"><b>${funciones.asientos}</b></font></td>
         				<td>
-        					<p>${funciones.tipof.tipo}</p>
+        					<p><font color="#84C0CD" size="5"><b>${funciones.tipof.tipo}</b></font></p>
         				</td>
         				<td>
-        						<p>${funciones.horariof.horario}</p>
+        						<p><font color="#84C0CD" size="5"><b>${funciones.horariof.horario}</b></font></p>
         				
         				</td>
         				
@@ -58,6 +64,6 @@
         		</c:forEach>
     	</tbody>
   		</table>
-  	</div>
+  	</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
 </body>
 </html>
