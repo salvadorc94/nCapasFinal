@@ -45,7 +45,7 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.2.5</version>
+			<version>42.4.1</version>
 		</dependency>
 	<!-- DEPENDENCIA PARA MANEJAR LOS ENTITYMANAGER -->
 	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
